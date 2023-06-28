@@ -64,19 +64,20 @@ class Solution
     static int[] topoSort(int V, ArrayList<ArrayList<Integer>> adj) 
     {
         // add your code here
-         boolean vis[] = new boolean[V];
-         Stack<Integer> st = new Stack<>();
-         for(int i=0 ; i<V; i++){
-             if(!vis[i]){
-                 dfs(i, adj, st, vis);
-             }
-         }
-         int ans[] = new int[V];
-         int i=0;
-         while(!st.isEmpty()){
-             ans[i++]= st.pop();
-         }
-         return ans;
+        boolean vis[] = new boolean[V];
+        Stack<Integer> st = new Stack<>();
+        for(int i=0; i<V; i++){
+            if(!vis[i]){
+                dfs(i, adj, st, vis);
+            }
+        }
+        int ans[] = new int[V];
+        int i=0;
+        while(!st.isEmpty()){
+            ans[i++] = st.pop();
+        }
+        return ans;
+      
     }
     static void dfs(int u, ArrayList<ArrayList<Integer>> adj, Stack<Integer> st , boolean vis[]){
         vis[u] = true;
@@ -85,6 +86,7 @@ class Solution
                 dfs(v, adj, st, vis);
             }
         }
-            st.push(u);
+        st.push(u);
+    
     }
 }
