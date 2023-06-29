@@ -22,15 +22,16 @@ class Complete{
     int KthMissingElement(int a[], int n, int k)
     {
         // Complete the function
-          int ans =0;
-          int count = a[0];
-          for(int i=0; i<n; i++){
-              if(a[i]!=count){
-                  ans = count; i--; k--;
-              }count++;
-              if(k==0)return ans;
-          }
-          return -1;
+         int ans=0;
+         int count = a[0];
+         for(int i=0; i<n; i++){
+             if(a[i]!=count){
+               ans =count; i--; k--;
+             }
+             count++;
+             if(k==0)return ans; 
+         }
+         return -1;
     }
   
     
