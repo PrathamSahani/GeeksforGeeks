@@ -32,18 +32,30 @@ class GFG {
 class Solution {
     int findKRotation(int arr[], int n) {
         // code here
-       ArrayList<Integer> list = new ArrayList<>();
-       for(int i=0; i<arr.length; i++){
-           list.add(arr[i]);
-       }
-       Collections.sort(list);
-       int count =0;
-       for(int i=0; i<arr.length; i++){
-           
-           if(arr[i]==list.get(0)){
-               count =i;
-           }
-       }
-       return count;
+    int low=0, high = arr.length-1;int index =-1;int ans = Integer.MAX_VALUE;
+    while(low<=high){
+        int mid = low+(high-low)/2;
+        if(arr[low]<=arr[high]){
+            if(arr[low]<ans ){
+                index = low;
+                ans = arr[low];
+            }
+            break;
+        }
+        if(arr[low]<=arr[mid]){
+            if(arr[low]<ans){
+                index = low;
+                ans = arr[low];
+            }
+            low = mid+1;
+        }else{
+            high = mid-1;
+            if(arr[mid]<ans){
+                index = mid;
+                ans = arr[mid];
+            }
+        }
+    }
+    return index;
     }
 }
