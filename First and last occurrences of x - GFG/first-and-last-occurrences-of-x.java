@@ -18,23 +18,25 @@ class GFG
     ArrayList<Long> find(long arr[], int n, int x)
     {
         // code here
-        ArrayList<Long> list = new ArrayList<>();
-        for(int i=0; i<arr.length;i++){
-            if(arr[i]==x){
-                 list.add((long)i);
-                 break;}
-        }
-        for(int i=arr.length-1 ; i>=0; i--){
-            if(arr[i]==x){
-                list.add((long)i);
-                break;
-            }
-        }
-        if(list.size()==0){
-            list.add((long)-1);
-            list.add((long)-1);
-        }
-        return list;
+      ArrayList<Long> list = new ArrayList<>();
+      for(int i=0; i<n; i++){
+          if(arr[i]==x){
+              list.add((long)i);
+              break;
+          }
+      }
+      for(int i=n-1; i>=0; i--){
+          if(arr[i]==x){
+              list.add((long)i);
+              break;
+          }
+      }
+      if(list.size()==0){
+          list.add((long)-1);
+          list.add((long)-1);
+          return list;
+      }
+      return list;
     }
 }
 
