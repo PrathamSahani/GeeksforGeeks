@@ -29,14 +29,18 @@ class Solution
      long floorSqrt(long x)
 	 {
 		// Your code here
-		long ans =1;
-		for(int i=1; i<=x; i++){
-		    if(i*i<=x){
-		        ans =i;
-		    }else{
-		        break;
-		    }
-		}
-		return ans;
+	  long low =1, high = x;
+	  long ans = 1;
+	  while(low<=high){
+	      long mid = (low+high)/2;
+	      if(mid*mid<=x){
+	          ans = mid;
+	          low = mid+1;
+	      }else{
+	          high = mid-1;
+	      }
+	      
+	  }
+	  return ans;
 	 }
 }
