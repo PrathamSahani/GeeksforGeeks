@@ -35,24 +35,23 @@ class Solution
 {
 	int  select(int arr[], int i)
 	{
-          int mini = i;
         // code here such that selectionSort() sorts arr[]
-          for(int j=i+1; j<arr.length; j++){
-              if(arr[j]<arr[mini]){
-                  mini = j;
-              }
-          }
-          return mini;
+        int mini = i;
+        for(int j=i+1; j<arr.length; j++){
+            if(arr[j]<arr[mini]){
+                mini = j;
+            }
+        }
+        return mini;
 	}
-	
 	void selectionSort(int arr[], int n)
 	{
-	    //code here
-	    for(int i=0; i<n; i++){
+	   //code here
+	   for(int i=0; i<n; i++){
 	       int mini = select(arr, i);
 	       int temp = arr[mini];
 	       arr[mini] = arr[i];
-	       arr[i] =temp;
-	    }
+	       arr[i] = temp;
+	   }
 	}
 }
