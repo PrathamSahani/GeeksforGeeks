@@ -117,19 +117,17 @@ class GfG {
 
 class Solution {
     // Function to return the diameter of a Binary Tree.
-    int solve(Node root, int[] ans){
-        if(root==null)return 0;
-        int left = solve(root.left, ans);
-        int right = solve(root.right, ans);
-        ans[0] = Math.max(ans[0], left+right);
+    int solve(Node root, int []max){
+         if(root==null)return 0;
+         int left = solve(root.left, max);
+         int right = solve(root.right, max);
+         max[0] = Math.max(max[0], left+right);
         return Math.max(left, right)+1;
-        
     }
     int diameter(Node root) {
         // Your code here
-        int ans[] =  new int[1];
-        solve(root, ans);
-        return ans[0]+1;
-        
+        int max[] = new int[1];
+        solve(root, max);
+        return max[0]+1;
     }
 }
