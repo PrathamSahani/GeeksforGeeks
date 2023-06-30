@@ -28,7 +28,9 @@ class GFG
 
 
 class Solution
+
 {
+    
     static boolean isPrime(int n){
         if(n<=1)return false;
         for(int i=2; i<=Math.sqrt(n); i++){
@@ -41,19 +43,19 @@ class Solution
     public int[] AllPrimeFactors(int N)
     {
         // code here
-         ArrayList<Integer> list = new ArrayList<>();
-         for(int i=2; i<=N; i++){
-         if(N%i==0){
-             if(isPrime(i)){
-                 list.add(i);
-             }
-         }
-         }
-       int ans[] = new int[list.size()];
-       int k=0; 
-       for(int val: list)
-           ans[k++] = val;
-           return ans;
-       
+    ArrayList<Integer> list = new ArrayList<>();
+    for(int i=2; i<=N; i++){
+        if(N%i==0){
+        if(isPrime(i)){
+            list.add(i);
+        }
+        }
+    }
+    int ans[] = new int[list.size()];
+    int i=0;
+    for(int val: list)
+        ans[i++]= val;
+        return ans;
+    
     }
 }
