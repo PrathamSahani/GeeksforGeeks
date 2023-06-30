@@ -79,14 +79,14 @@ class Solution{
         // Code here
         Queue<Node> q = new LinkedList<>();
         q.add(root);
-        int i=1; int n = list.size();
+        int  n = list.size();int i=1;
         while(q.size()!=0 && i<n){
-            Node rt = q.poll();
+            Node rt  = q.poll();
             rt.left = new Node(list.get(i++));
             q.add(rt.left);
             rt.right = new Node(list.get(i++));
             q.add(rt.right);
-
         }
+      
     }
 }
