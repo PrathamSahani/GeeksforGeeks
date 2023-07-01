@@ -21,16 +21,15 @@ class GFG{
 }
 // } Driver Code Ends
 
-
-//User function Template for Java
-
 class Solution{
     static int setSetBit(int x, int y, int l, int r){
-        // code 
-        for(int i=l;i<=r;i++)
-        {
-            x = x | (y & 1<<i-1);
+        // code here
+        if (x == y) return x;
+        for (int i = l; i <= r; i++) {
+            if (((y >> (i - 1)) & 1) == 1) {
+                x |= (1 << (i - 1));
+            }
         }
         return x;
-  }
+    }
 }
