@@ -20,23 +20,20 @@ class GFG {
 
 
 
-
 class Solution 
 {
     //Function to reverse words in a given string.
     String reverseWords(String S)
     {
-        // code h  
-        
-   String str[] = S.split("\\.");
-   StringBuilder sb = new StringBuilder();
-   for(int i=str.length-1; i>=0; i--){
-       sb.append(str[i]);
-       if(i>0){
-           sb.append(".");
-       }
-   }
-   return sb.toString();
-
+        // code here 
+        String str[] = S.split("\\.");
+        StringBuilder sp = new StringBuilder();
+        for(int i=str.length-1; i>=0; i--){
+            sp.append(str[i]);
+            if(i>0){
+                sp.append(".");
+            }
+        }
+        return sp.toString();
     }
-} 
+}
