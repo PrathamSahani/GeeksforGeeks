@@ -31,17 +31,17 @@ class GFG{
 //User function Template for Java
 
 class Solution{
-    public int minimumEnergy(int arr[],int n){
+    public int minimumEnergy(int arr[],int N){
         //code here
         
-        int temp[] = new int[n];
-       if(n==1)return 0;
+       int temp[] = new int[N];
+       if(N==1)return 0;
        temp[1] = Math.abs(arr[1]-arr[0]);
-       for(int i=2; i<n; i++){
+       for(int i=2; i<N; i++){
            int left = temp[i-1]+Math.abs(arr[i]-arr[i-1]);
            int right = temp[i-2]+Math.abs(arr[i]-arr[i-2]);
            temp[i] = Math.min(left, right);
        }
-       return temp[n-1];
+       return temp[N-1];
     }
 }
