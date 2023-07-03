@@ -25,20 +25,19 @@ class SortedStack{
 
 /*Complete the function below*/
 class GfG{
- public Stack<Integer> sort(Stack<Integer> s)
-    {
-        //add code here.
-        int[] arr= new int[s.size()];
-        int i=0;
-        while(!s.isEmpty()){
-            int a=s.pop();
-            arr[i++]=a;
-        }
-        
-        java.util.Arrays.sort(arr);
-        for(int ele:arr){
-            s.push(ele);
-        }
-        return s;
-    }
+	public Stack<Integer> sort(Stack<Integer> s)
+	{
+		//add code here.
+		int arr[] = new int[s.size()];
+		int i=0; 
+		while(!s.isEmpty()){
+		    int a = s.pop();
+		    arr[i++] = a;
+		}
+		java.util.Arrays.sort(arr);
+		for(int ele: arr){
+		    s.push(ele);
+		}
+		return s;
+	}
 }
