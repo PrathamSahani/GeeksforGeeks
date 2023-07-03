@@ -47,14 +47,12 @@ class Queues
     //Function to push an element into stack using two queues.
     void push(int a)
     {
-	    // Your code here
-	    q2.add(a);
-	    while(!q1.isEmpty()){
-	        q2.add(q1.remove());
-	    }
-	    while(!q2.isEmpty()){
-	        q1.add(q2.remove());
-	    }
+        q2.add(a);
+        while(!q1.isEmpty()){
+            q2.add(q1.remove());
+        }while(!q2.isEmpty()){
+            q1.add(q2.remove());
+        }
     }
     
     //Function to pop an element from stack using two queues. 
