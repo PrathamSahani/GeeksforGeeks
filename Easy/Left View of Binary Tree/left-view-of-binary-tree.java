@@ -128,25 +128,33 @@ class Tree
       // Your code here
       ArrayList<Integer> list = new ArrayList<>();
       if(root==null)return list;
-      Queue<Node> q = new LinkedList<>();
-      q.add(root);
+      Queue<Node>   q = new LinkedList<>();
+      q.add(root);int level=0;
       while(!q.isEmpty()){
-          int  n = q.size();
+         
+          int n = q.size();
           for(int i=0; i<n; i++){
-              Node temp =q.poll();
+              Node temp = q.poll();
               if(i==0){
-                  list.add(temp.data);
+              list.add(temp.data);
               }
-              if(temp.left!=null)
-              q.add(temp.left);
-              if(temp.right!=null)
-              q.add(temp.right);
+             if(temp.left!=null)
+             q.add(temp.left);
+             if(temp.right!=null)
+             q.add(temp.right);
           }
+          
+           level++;
       }
       return list;
-      
     }
 }
+
+
+
+
+
+
 
 
 
