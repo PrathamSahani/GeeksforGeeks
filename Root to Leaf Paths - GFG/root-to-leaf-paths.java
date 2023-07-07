@@ -134,25 +134,22 @@ class Node{
 
 */
 class Tree{
- public void getPath(Node root, ArrayList<ArrayList<Integer>> al, ArrayList<Integer> temp){
-     temp.add(root.data);
-     if(root.left==null && root.right==null){
-         al.add(new ArrayList<>(temp));
-         temp.remove(temp.size()-1);
-         return ;
-     }
-     if(root.left!=null){
-         getPath(root.left, al, temp);
-     }if(root.right!=null){
-         getPath(root.right, al, temp);
-     }
-     temp.remove(temp.size()-1);
- }
+    public void Path(Node root, ArrayList<Integer> path, ArrayList<ArrayList<Integer>> all ){
+        if(root==null)return ;
+        path.add(root.data);
+        if(root.left==null && root.right==null){
+            all.add(new ArrayList<>(path));
+        }
+        Path(root.left, path, all);
+        Path(root.right, path, all);
+        path.remove(path.size()-1);
+    }
     public ArrayList<ArrayList<Integer>> Paths(Node root){
         // Code here
-        ArrayList<ArrayList<Integer>> al = new ArrayList<>();
-        getPath(root, al, new ArrayList());
-        return al;
+        ArrayList<Integer> path = new ArrayList<>();
+        ArrayList<ArrayList<Integer>> all = new ArrayList<>();
+        Path(root, path, all);
+        return all;
         
     }
     
