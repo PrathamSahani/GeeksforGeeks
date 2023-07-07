@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/root-to-leaf-paths/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=root-to-leaf-paths">Root to Leaf Paths</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a Binary Tree of size N, you need to find&nbsp;all the possible paths&nbsp;from root node to all the leaf&nbsp;node's of the binary tree.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/root-to-leaf-paths/1">Root to Leaf Paths</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a Binary Tree of size N, you need to find&nbsp;all the possible paths&nbsp;from root node to all the leaf&nbsp;node's of the binary tree.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
