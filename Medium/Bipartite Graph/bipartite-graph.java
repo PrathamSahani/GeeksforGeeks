@@ -37,34 +37,53 @@ class GFG
 
 class Solution
 {
-    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
-    {
-          int n = adj.size();
-        int[] colour = new int[n];
-
-        for (int node = 0; node < n; node++) {
-            if (colour[node] != 0) {
-                continue;
-            }
-
-            Queue<Integer> q = new ArrayDeque<>();
-            q.add(node);
-            colour[node] = 1;
-
-            while (!q.isEmpty()) {
-                int cur = q.poll();
-
-                for (int ne : adj.get(cur)) {
-                    if (colour[ne] == 0) {
-                        colour[ne] = -colour[cur];
-                        q.add(ne);
-                    } else if (colour[ne] != -colour[cur]) {
-                        return false;
-                    }
+    public boolean check(int start, int V, ArrayList<ArrayList<Integer>> adj, int color[]){
+        Queue<Integer> q = new LinkedList<Integer>();
+        q.add(start);
+        color[start] =0;
+        while(!q.isEmpty()){
+            int node = q.peek();
+            q.remove();
+            for(int it: adj.get(node)){
+                if(color[it]== -1){
+                    color[it]=1-color[node];
+                    q.add(it);
+                }
+                else if(color[it]==color[node]){
+                    return false;
                 }
             }
         }
-
+        return true;
+    }
+    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
+    {
+        // Code here
+        int color[] = new int[V];
+        for(int i=0; i<V; i++)color[i] = -1;
+        for(int i=0; i<V; i++){
+            if(color[i]==-1)
+            {
+                if(check(i, V, adj, color)==false){
+                    return false;
+                }
+            }
+            
+        }
         return true;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
