@@ -4,9 +4,8 @@ class Solution:
     #Function to return the count of number of elements in union of two arrays.
     def doUnion(self,a,n,b,m):
         
-        union_set = set(a).union(b)
-        return len(union_set)
-
+       ans = set(a).union(b)
+       return len(ans)
 
 #{ 
  # Driver Code Starts
