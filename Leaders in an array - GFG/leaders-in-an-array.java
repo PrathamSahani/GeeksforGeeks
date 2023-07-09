@@ -61,7 +61,7 @@ class Solution{
            }
        }
        
-       Collections.sort(al, Collections.reverseOrder());
+       Collections.reverse(al);
        return al;
     }
 }
