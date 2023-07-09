@@ -30,16 +30,15 @@ class GFG
 class Solution{
     
       int minJumps(int arr[]) {
-         int range =0, jumps =0, curr =0;
-         for(int i=0; i<arr.length-1; i++){
-             range = Math.max(range, arr[i]+i);
-             if(curr==i){
-                 curr = range;
-                 jumps++;
-             }
-         }
-         if(curr<arr.length-1)return -1;
-         return jumps;
-       
-  
+          int range =0, jumps=0, curr=0;
+          for(int i=0; i<arr.length-1; i++){
+              range =Math.max(range, arr[i]+i);
+              if(curr==i){
+                  curr = range;
+                  jumps++;
+              }
+          }
+          if(curr<arr.length-1)return -1;
+          return jumps;
+      
     }}
