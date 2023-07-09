@@ -26,6 +26,7 @@ class GFG
 // } Driver Code Ends
 
 
+
 class Solution{
     
       int minJumps(int arr[]) {
@@ -36,7 +37,8 @@ class Solution{
                  curr = range;
                  jumps++;
              }
-         }if(curr<arr.length-1)return -1;
+         }
+         if(curr<arr.length-1)return -1;
          return jumps;
        
   
