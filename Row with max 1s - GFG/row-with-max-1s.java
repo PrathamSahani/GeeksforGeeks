@@ -31,27 +31,26 @@ public class Main {
 // } Driver Code Ends
 
 
+
 //User function Template for Java
 
 class Solution {
     int rowWithMax1s(int arr[][], int n, int m) {
         // code here
-        int ans =0, count =0, max =0;
+        int ans=0, count =0, max =0;
         for(int i=0; i<n; i++){
-            count =0;
+            count=0;
             for(int j=0; j<m; j++){
                 if(arr[i][j]==1){
                     count++;
                 }
             }
             if(count>max){
-                max =count;
-                ans =i;
-            }
+                    max= count;
+                    ans =i;
+                }
         }
-        if(max ==0){
-            return -1;
-        }
+        if(max==0)return -1;
         return ans;
     }
 }
