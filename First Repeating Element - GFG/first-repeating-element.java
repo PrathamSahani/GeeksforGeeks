@@ -39,19 +39,15 @@ class Solution {
     // Function to return the position of the first repeating element.
     public static int firstRepeated(int[] arr, int n) {
         // Your code here
-        HashSet<Integer> set = new HashSet<>();
+        HashSet<Integer> set  = new HashSet<>();
         int ans =n;
         for(int i=n-1; i>=0; i--){
-             if(set.contains(arr[i])){
-                 ans = i+1;
-             }else{
-                 set.add(arr[i]);
-             }
-        }
-        if(ans==n){
-            return -1;
-        }return ans;
-              
- 
+            if(set.contains(arr[i])){
+                ans = i+1;
+            }else{
+                set.add(arr[i]);
+            }
+        }if(ans==n)return -1;
+        return ans;
     }
 }
