@@ -67,10 +67,11 @@ class Solution {
 
     public static int countNodes(Node root) {
         // Code here
-           if(root==null)return 0;
-        int left = countNodes(root.left);
-        int right = countNodes(root.right);
-        int ans = left+right+1;
-        return ans;
+          if(root==null)return 0;
+          int left = countNodes(root.left);
+          int right = countNodes(root.right);
+          int ans = left+right+1;
+          return ans;
+          
     }
 }
