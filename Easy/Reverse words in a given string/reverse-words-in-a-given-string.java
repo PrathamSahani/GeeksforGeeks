@@ -26,13 +26,14 @@ class Solution
     String reverseWords(String S)
     {
         // code here 
-        String str[] = S.trim().split("\\.");
+        String str[] =S.trim().split("\\.");
         StringBuilder sb = new StringBuilder();
         for(int i=str.length-1; i>=0; i--){
             sb.append(str[i]);
             if(i>0){
                 sb.append(".");
             }
+            
         }
         return sb.toString();
     }
