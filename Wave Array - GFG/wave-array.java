@@ -58,20 +58,21 @@ class GFG {
 
 
 class Solution {
-    public static void convertToWave(int n, int[] arr) {
+    public static void convertToWave(int n, int[] a) {
         // code here
-        for(int i=1; i<arr.length; i=i+2){
-          if(arr[i]>arr[i-1]){
-              int temp = arr[i-1];
-              arr[i-1] = arr[i];
-              arr[i] = temp;
-          }
+        for(int i=1; i<a.length; i=i+2){
+            if(a[i-1]<a[i]){
+                int temp = a[i];
+                a[i] = a[i-1];
+                a[i-1] =temp;
+                
+            }
         }
-        for(int i=2; i<arr.length; i=i+2){
-            if(arr[i-1]>arr[i]){
-                int temp =arr[i];
-                arr[i] = arr[i-1];
-                arr[i-1] =temp;
+        for(int i=2; i<a.length; i=i+2){
+            if(a[i-1]>a[i]){
+                int temp = a[i];
+                a[i] = a[i-1];
+                a[i-1] = temp;
             }
         }
     }
