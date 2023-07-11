@@ -61,7 +61,7 @@ class Solution
     long power(int N,int R)
     {
         //Your code here
-        if(N==0) return 0;
+       if(N==0) return 0;
         if(R==0)return 1;
         long mod = (long)1e9+7;
         
@@ -70,6 +70,7 @@ class Solution
         return (ans%mod*ans%mod)%mod;
         else
         return (ans%mod*ans%mod*N%mod)%mod;
+        
         
     }
 
