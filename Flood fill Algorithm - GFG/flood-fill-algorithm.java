@@ -39,23 +39,20 @@ class GFG
 
 class Solution
 {
-    public static void fillArray(int img[][], int row, int col, int prev, int newColor){
-        if(row<0 || row>=img.length || col<0 || col>=img[0].length){
+    public static void fill(int img[][], int row, int col, int prev, int color){
+        if(row<0|| row>=img.length|| col<0 || col>=img[0].length){
             return;
         }
-        if(img[row][col] == newColor){
+        if(img[row][col]==color)
             return;
-        }
-        if(img[row][col]!=prev){
-            return ;
-        }
+        if(img[row][col]!=prev)return ;
         if(img[row][col]==prev){
-            img[row][col] = newColor;
+            img[row][col] = color;
         }
-        fillArray(img, row+1, col, prev, newColor);
-        fillArray(img, row-1, col, prev, newColor);
-        fillArray(img, row, col-1, prev, newColor);
-        fillArray(img, row, col+1, prev, newColor);
+        fill(img, row-1, col, prev, color);
+        fill(img, row, col-1, prev, color);
+        fill(img, row+1, col, prev, color);
+        fill(img, row, col+1,prev, color);
         
     }
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
@@ -63,7 +60,7 @@ class Solution
         // Code here 
         int arr[][] = image;
         int prev = image[sr][sc];
-        fillArray(arr, sr, sc, prev, newColor);
+        fill(arr, sr, sc, prev, newColor);
         return arr;
     }
 }
