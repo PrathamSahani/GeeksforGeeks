@@ -39,20 +39,19 @@ class GFG
 
 class Solution
 {
-    public static void fill(int img[][], int row, int col, int prev, int color){
-        if(row<0|| row>=img.length|| col<0 || col>=img[0].length){
-            return;
+    public static void fill(int image[][], int row, int col ,int prev, int color){
+        if(row<0 || row>=image.length|| col<0 || col>=image[0].length){
+            return ;
         }
-        if(img[row][col]==color)
-            return;
-        if(img[row][col]!=prev)return ;
-        if(img[row][col]==prev){
-            img[row][col] = color;
+        if(image[row][col]==color)return;
+        if(image[row][col]!=prev)return;
+        if(image[row][col]==prev){
+            image[row][col]=color;
         }
-        fill(img, row-1, col, prev, color);
-        fill(img, row, col-1, prev, color);
-        fill(img, row+1, col, prev, color);
-        fill(img, row, col+1,prev, color);
+        fill(image, row-1, col, prev, color);
+        fill(image, row, col+1, prev, color);
+        fill(image, row+1, col, prev, color);
+        fill(image, row, col-1, prev, color);
         
     }
     public int[][] floodFill(int[][] image, int sr, int sc, int newColor)
@@ -60,7 +59,7 @@ class Solution
         // Code here 
         int arr[][] = image;
         int prev = image[sr][sc];
-        fill(arr, sr, sc, prev, newColor);
+        fill(arr, sr,sc, prev, newColor);
         return arr;
     }
 }
