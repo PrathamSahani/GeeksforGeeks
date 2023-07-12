@@ -40,15 +40,16 @@ class Solution {
     public ArrayList<ArrayList<Integer>> printGraph(
         int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
-        ArrayList<ArrayList<Integer>> ans = new ArrayList<>();
-        for(int i=0; i<adj.size(); i++){
-            ArrayList<Integer> list = new ArrayList<>();
-            list.add(i);
-            for(int j=0; j<adj.get(i).size(); j++){
-                list.add(adj.get(i).get(j));
-            }
-            ans.add(list);
-        }
-        return ans;
+         ArrayList<ArrayList<Integer>> list = new ArrayList<>();
+         for(int i=0; i<adj.size(); i++){
+             
+             ArrayList<Integer> ans = new ArrayList<>();
+             ans.add(i);
+             for(int j=0; j<adj.get(i).size(); j++){
+                 ans.add(adj.get(i).get(j));
+             }
+             list.add(ans);
+         }
+         return list;
     }
-}
+}  
