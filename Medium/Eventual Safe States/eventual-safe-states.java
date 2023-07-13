@@ -46,34 +46,34 @@ class Solution {
     List<Integer> eventualSafeNodes(int V, List<List<Integer>> aj) {
 
         // Your code here
-        List<List<Integer>> adj = new ArrayList<>();
+         List<List<Integer>> adj = new ArrayList<>();
         for(int i=0; i<V; i++){
             adj.add(new ArrayList<>());
         }
-        int indgree[] = new int[V];
+        List<Integer> list = new ArrayList<>();
+        int ans[] = new int[V];
         for(int i=0; i<V; i++){
             for(int it: aj.get(i)){
                 adj.get(it).add(i);
-                indgree[i]++;
+                ans[i]++;
             }
         }
         Queue<Integer> q = new LinkedList<>();
-        List<Integer> safe = new ArrayList<>();
-        for( int i=0; i<V; i++){
-            if(indgree[i]==0){
-                q.add(i);
-            }
+        for(int i=0; i<V; i++){
+            if(ans[i]==0)q.add(i);
         }
+        int i=0;
         while(!q.isEmpty()){
             int node = q.peek();
             q.remove();
-            safe.add(node);
-            for(int it:adj.get(node)){
-                indgree[it]--;
-                if(indgree[it]==0)q.add(it);
+            list.add(node);
+            for(int it: adj.get(node)){
+                ans[it]--;
+                if(ans[it]==0)q.add(it);
+                
             }
         }
-        Collections.sort(safe);
-        return safe;
+        Collections.sort(list);
+        return list;
     }
 }
