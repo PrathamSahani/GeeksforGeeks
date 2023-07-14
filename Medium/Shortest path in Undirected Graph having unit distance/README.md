@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=shortest-path-in-undirected-graph-having-unit-distance">Shortest path in Undirected Graph having unit distance</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given an Undirected Graph having unit weight, Find the shortest path from src to all the vertex and if it is unreachable to reach any vertex, then return -1 for that vertex.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/shortest-path-in-undirected-graph-having-unit-distance/1">Shortest path in Undirected Graph having unit distance</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">You are given an Undirected Graph having unit weight, Find the shortest path from src to all the vertex and if it is unreachable to reach any vertex, then return -1 for that vertex.</span></p>
 
 <p><span style="font-size:18px"><strong>Example:</strong></span></p>
 
