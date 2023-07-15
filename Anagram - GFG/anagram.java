@@ -46,7 +46,7 @@ class Solution
         char ch1[] = b.toCharArray();
         Arrays.sort(ch);
         Arrays.sort(ch1);
-        for(int i=0; i<ch.length && i<ch1.length; i++){
+        for(int i=0; i<a.length() && i<b.length(); i++){
             if(ch[i] != ch1[i])
             return false;
         }
