@@ -124,27 +124,27 @@ class Solution
     {
         // Code here
         ArrayList<Integer> list = new ArrayList<>();
-        Map<Integer , Integer> m = new TreeMap<Integer, Integer>();
-        if(root==null)return list;
+        Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
         Queue<Node> q = new LinkedList<>();
         root.hd =0;
         q.add(root);
+        
         while(!q.isEmpty()){
-            Node temp= q.poll();
+            Node temp = q.poll();
             int hd = temp.hd;
             m.put(hd, temp.data);
             if(temp.left!=null){
                 temp.left.hd = hd-1;
                 q.add(temp.left);
-            }
-            if(temp.right!=null){
+            }if(temp.right!=null){
                 temp.right.hd = hd+1;
                 q.add(temp.right);
             }
         }
-        for(Map.Entry<Integer, Integer> entry: m.entrySet()){
+        for(Map.Entry<Integer, Integer> entry : m.entrySet()){
             list.add(entry.getValue());
         }
         return list;
+        
     }
 }
