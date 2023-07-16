@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1?utm_source=youtube&utm_medium=collab_striver_ytdescription&utm_campaign=determine-if-two-trees-are-identical">Determine if Two Trees are Identical</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two binary trees, the task is to find if both of them are identical or not.&nbsp; </span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/determine-if-two-trees-are-identical/1?page=1&category[]=Tree&category[]=Binary%20Search%20Tree&sortBy=submissions">Determine if Two Trees are Identical</a></h2><h3>Difficulty Level : Easy</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given two binary trees, the task is to find if both of them are identical or not.&nbsp; </span></p>
 
 <p><br>
 <span style="font-size:18px"><strong>Example 2:</strong></span></p>
