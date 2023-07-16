@@ -111,10 +111,10 @@ class GfG {
 class Solution{
     //Function to find the vertical order traversal of Binary Tree.
     static class pair{
-        int d;
+        int hd;
         Node node;
         pair(int d,Node node){
-            this.d = d;
+            this.hd = d;
             this.node = node;
         }
     }
@@ -125,18 +125,20 @@ class Solution{
         q.add(new pair(0,root));
         while(!q.isEmpty()){
             pair cur = q.poll();
-            if(mp.containsKey(cur.d)){
-                mp.get(cur.d).add(cur.node.data);
+            int hd = cur.hd;
+            Node temp = cur.node;
+            if(mp.containsKey(hd)){
+                mp.get(hd).add(temp.data);
             }else{
                 ArrayList<Integer> a = new ArrayList<>();
-                a.add(cur.node.data);
-                mp.put(cur.d,a);
+                a.add(temp.data);
+                mp.put(hd,a);
             }
             if(cur.node.left!=null){
-                q.add(new pair(cur.d-1,cur.node.left));
+                q.add(new pair(hd-1,temp.left));
             }
             if(cur.node.right!=null){
-                q.add(new pair(cur.d+1,cur.node.right));
+                q.add(new pair(hd+1, temp.right));
             }
         }
         ArrayList<Integer> res = new ArrayList<>();
