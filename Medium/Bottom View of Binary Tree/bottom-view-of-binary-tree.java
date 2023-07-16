@@ -117,34 +117,42 @@ class GfG {
 //User function Template for Java
 
 
+
 class Solution
 {
     //Function to return a list containing the bottom view of the given tree.
     public ArrayList <Integer> bottomView(Node root)
     {
         // Code here
-        ArrayList<Integer> list = new ArrayList<>();
-        Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
+        Map<Integer, Integer> mp = new TreeMap<Integer, Integer>();
         Queue<Node> q = new LinkedList<>();
         root.hd =0;
         q.add(root);
         
         while(!q.isEmpty()){
-            Node temp = q.poll();
+             Node temp = q.poll();
             int hd = temp.hd;
-            m.put(hd, temp.data);
+            // Node temp = it.node;
+            // if(mp.containsKey(hd)){
+                // mp.get(hd).add(temp.data);
+            // }else{
+            //     ArrayList<Integer> list = new ArrayList<>();
+            //     list.add(temp.data);
+                mp.put(hd, temp.data);
+            // }
             if(temp.left!=null){
                 temp.left.hd = hd-1;
                 q.add(temp.left);
-            }if(temp.right!=null){
+            }
+            if(temp.right!=null){
                 temp.right.hd = hd+1;
                 q.add(temp.right);
             }
         }
-        for(Map.Entry<Integer, Integer> entry : m.entrySet()){
-            list.add(entry.getValue());
+        ArrayList<Integer>res = new ArrayList<>();
+        for(Map.Entry<Integer, Integer> entry : mp.entrySet()){
+            res.add(entry.getValue());
         }
-        return list;
-        
+        return res;
     }
 }
