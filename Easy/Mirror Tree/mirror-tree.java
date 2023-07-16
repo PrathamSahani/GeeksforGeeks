@@ -126,10 +126,10 @@ class Node
 } */
 
 class Solution {
-    public static void ans(Node root){
+    public static void f(Node root){
         if(root==null)return ;
-        ans(root.left);
-        ans(root.right);
+        f(root.left);
+        f(root.right);
         Node temp = root.right;
         root.right = root.left;
         root.left = temp;
@@ -137,6 +137,6 @@ class Solution {
     // Function to convert a binary tree into its mirror tree.
     void mirror(Node node) {
         // Your code here
-        ans(node);
+        f(node);
     }
 }
