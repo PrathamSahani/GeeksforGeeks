@@ -33,8 +33,9 @@ class GFG {
 
 
 class Solution {
-    public boolean dfs(int node, int parent , int vis[], ArrayList<ArrayList<Integer>> adj){
-        vis[node] =1;
+    // Function to detect cycle in an undirected graph.
+    public boolean dfs(int node, int parent, int vis[], ArrayList<ArrayList<Integer>> adj){
+        vis[node]=1;
         for(int it: adj.get(node)){
             if(vis[it]==0){
                 if(dfs(it, node, vis, adj)==true)
@@ -44,7 +45,6 @@ class Solution {
         }
         return false;
     }
-    // Function to detect cycle in an undirected graph.
     public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
         // Code here
         int vis[] = new int[V];
