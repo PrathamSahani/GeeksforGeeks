@@ -126,21 +126,21 @@ class BinaryTree
     static ArrayList<Integer> preorder(Node root)
     {
         // Code here
-        ArrayList<Integer> list = new ArrayList<>();
+         ArrayList<Integer> list = new ArrayList<>();
         if(root==null)return list;
-        Stack<Node> st= new Stack<>();
+        Stack<Node> st = new Stack<>();
         st.push(root);
-        while(!st.isEmpty())
-        {
-             root = st.pop();
-            list.add(root.data);
-            if(root.right!=null){
-                st.push(root.right);
-            }if(root.left!=null){
-                st.push(root.left);
-            }
+        while(!st.isEmpty()){
+            Node temp = st.peek();
+            list.add(temp.data);
+            st.pop();
+            if(temp.right!=null)
+            st.push(temp.right);
+            if(temp.left!=null)
+            st.push(temp.left);
         }
         return list;
+
     }
 
 }
