@@ -41,34 +41,35 @@ class Solution {
     int numberOfEnclaves(int[][] grid) {
 
         // Your code here
-        int n = grid.length, m = grid[0].length;
+        int n = grid.length;
+        int m = grid[0].length;
         for(int i=0; i<n; i++){
             dfs(grid, i, 0);
-            dfs(grid, i, m-1);
+            dfs(grid, i,  m-1);
         }
-        for(int j=0; j<m; j++){
-            dfs(grid, 0, j);
-            dfs(grid, n-1, j);
+        for(int i=0; i<m; i++){
+            dfs(grid, 0, i);
+            dfs(grid, n-1, i);
         }
         int count =0;
         for(int i=0; i<n; i++){
             for(int j=0; j<m; j++){
-                if(grid[i][j]==1){
-                    count++;
-                }
+                if(grid[i][j]==1)count++;
             }
         }
         return count;
     }
-    private static void dfs(int[][] grid, int i, int j){
-        if(i<0 || i>=grid.length || j<0 || j>=grid[0].length || grid[i][j]!=1){
+    public static void dfs(int grid[][], int i, int j){
+        if(i<0 || i>=grid.length || j<0 ||j>=grid[0].length || grid[i][j]!=1){
             return ;
+            
         }
-        grid[i][j] =-1;
-        dfs(grid, i+1, j);
-        dfs(grid, i-1, j);
-        dfs(grid, i, j-1);
-        dfs(grid, i, j+1);
-        
+        else{
+            grid[i][j] =-1;
+            dfs(grid, i+1, j);
+            dfs(grid, i-1, j);
+            dfs(grid, i, j+1);
+            dfs(grid, i, j-1);
+        }
     }
 }
