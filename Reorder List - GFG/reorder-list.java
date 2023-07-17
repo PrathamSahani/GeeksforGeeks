@@ -89,6 +89,26 @@ class Node {
 class Solution {
     void reorderlist(Node head) {
         // Your code here
-       Node t
+       Node temp = head;
+       ArrayList<Integer> al = new ArrayList<>();
+       while(temp!=null){
+           al.add(temp.data);
+           temp = temp.next;
+       }
+       ArrayList<Integer> bl = new ArrayList<>();
+       int i=0;int j=al.size()-1;
+       while(i<=j){
+           bl.add(al.get(i));
+           bl.add(al.get(j));
+           j--;
+           i++;
+       }
+       int k=0;
+       Node t = head;
+       while(t!=null){
+           t.data = bl.get(k);
+           t = t.next;
+           k++;
+       }
     }
 }
