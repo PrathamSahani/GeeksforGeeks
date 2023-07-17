@@ -31,6 +31,7 @@ public class Main{
 // } Driver Code Ends
 
 
+
 // User function Template for Java
 class Pair{
     int node;
@@ -49,18 +50,20 @@ class Solution{
             adj.add(new ArrayList<>());
         }
 
-        for (int i = 0; i < E; i++) {
-            int src = edges[i][0];
-            int dest = edges[i][1];
-            int weight = edges[i][2];
+       for (int[] edge : edges) {
+            int src = edge[0];
+            int dest = edge[1];
+            int weight = edge[2];
 
-            adj.get(src).add(new ArrayList<>());
-            adj.get(src).get(adj.get(src).size() - 1).add(dest);
-            adj.get(src).get(adj.get(src).size() - 1).add(weight);
+            adj.get(src).add(new ArrayList<>() {{
+                add(dest);
+                add(weight);
+            }});
 
-            adj.get(dest).add(new ArrayList<>());
-            adj.get(dest).get(adj.get(dest).size() - 1).add(src);
-            adj.get(dest).get(adj.get(dest).size() - 1).add(weight);
+            adj.get(dest).add(new ArrayList<>() {{
+                add(src);
+                add(weight);
+            }});
         }
         
 	    PriorityQueue<Pair> pq = new PriorityQueue<Pair>((x, y)-> x.distance-y.distance);
