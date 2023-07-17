@@ -31,59 +31,63 @@ public class Main{
 // } Driver Code Ends
 
 
-
-
 // User function Template for Java
+class Pair{
+    int node;
+    int distance;
+    public Pair(int distance, int node){
+        this.node = node;
+        this.distance = distance;
+    }
+}
 
 class Solution{
-   
 	static int spanningTree(int V, int E, int edges[][]){
 	    // Code Here. 
-	    
-	    List<Pair> adj[] = new ArrayList[V];
-	    for(int i = 0; i < V; i++){
-	        adj[i] = new ArrayList<>();
-	    }
-	    
-	    for(int[] edge: edges){
-	        int u = edge[0], v = edge[1], wt = edge[2];
-	        adj[u].add(new Pair(v, wt));
-	        adj[v].add(new Pair(u, wt));
-	    }
-	    
-	    int sum = 0;
-	    
-	    Queue<Pair> pq = new PriorityQueue<>((a, b)->a.first - b.first);
+	ArrayList<ArrayList<ArrayList<Integer>>> adj = new ArrayList<>();
+        for (int i = 0; i < V; i++) {
+            adj.add(new ArrayList<>());
+        }
+
+        for (int i = 0; i < E; i++) {
+            int src = edges[i][0];
+            int dest = edges[i][1];
+            int weight = edges[i][2];
+
+            adj.get(src).add(new ArrayList<>());
+            adj.get(src).get(adj.get(src).size() - 1).add(dest);
+            adj.get(src).get(adj.get(src).size() - 1).add(weight);
+
+            adj.get(dest).add(new ArrayList<>());
+            adj.get(dest).get(adj.get(dest).size() - 1).add(src);
+            adj.get(dest).get(adj.get(dest).size() - 1).add(weight);
+        }
+        
+	    PriorityQueue<Pair> pq = new PriorityQueue<Pair>((x, y)-> x.distance-y.distance);
+	    int vis[] = new int[V];
 	    pq.add(new Pair(0, 0));
-	    
-	    boolean vis[] = new boolean[V];
+	    int sum =0;
 	    
 	    while(!pq.isEmpty()){
-	        Pair p = pq.remove();
-	        int wt = p.first;
-	        int node = p.second;
+	        int wt = pq.peek().distance;
+	        int node = pq.peek().node;
+	        pq.remove();
 	        
-	        if(vis[node]) continue;
+	        if(vis[node]==1)continue;
 	        
-	        vis[node] = true;
-	        sum += wt;
+	        //add to in the mst;
+	        vis[node] =1;
+	        sum+=wt;
 	        
-	        for(Pair adjNodePair : adj[node]){
-	            int edWt = adjNodePair.second;
-	            int adjNode = adjNodePair.first;
-	            if(!vis[adjNode]){
-	                pq.add(new Pair(edWt, adjNode));
+	        for(int i=0; i<adj.get(node).size(); i++){
+	            int edw = adj.get(node).get(i).get(1);
+	            int adjNode = adj.get(node).get(i).get(0);
+	            
+	            if(vis[adjNode]==0){
+	                pq.add(new Pair(edw, adjNode));
 	            }
 	        }
 	    }
 	    return sum;
 	}
-}
-
-class Pair{
-    int first, second;
-    Pair(int _first, int _second){
-        first = _first;
-        second = _second;
-    }
 }
