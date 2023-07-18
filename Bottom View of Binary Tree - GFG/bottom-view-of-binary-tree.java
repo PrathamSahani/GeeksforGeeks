@@ -123,28 +123,26 @@ class Solution
     public ArrayList <Integer> bottomView(Node root)
     {
         // Code here
-        ArrayList<Integer> list = new ArrayList<>();
-        Map<Integer, Integer> m = new TreeMap<Integer, Integer>();
         Queue<Node> q = new LinkedList<>();
+        Map<Integer, Integer> mp = new TreeMap<>();
         root.hd =0;
         q.add(root);
-        
         while(!q.isEmpty()){
             Node temp = q.poll();
             int hd = temp.hd;
-            m.put(hd, temp.data);
-            if(temp.left!=null){
-                temp.left.hd = hd-1;
-                q.add(temp.left);
-            }if(temp.right!=null){
-                temp.right.hd = hd+1;
-                q.add(temp.right);
-            }
+              mp.put(hd, temp.data);
+             if(temp.left!=null){
+                 temp.left.hd = hd-1;
+                 q.add(temp.left);
+             }if(temp.right!=null){
+                 temp.right.hd = hd+1;
+                 q.add(temp.right);
+             }
         }
-        for(Map.Entry<Integer, Integer> entry : m.entrySet()){
-            list.add(entry.getValue());
+        ArrayList<Integer> res = new ArrayList<>();
+        for(Map.Entry<Integer, Integer> entry : mp.entrySet()){
+            res.add(entry.getValue());
         }
-        return list;
-        
+        return res;
     }
 }
