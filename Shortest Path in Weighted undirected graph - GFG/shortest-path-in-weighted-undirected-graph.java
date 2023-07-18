@@ -28,60 +28,60 @@ import java.io.*;
 }
 // } Driver Code Ends
 
-// import java.util.*;
 
-class Pair {
-    int first, second;
-    Pair(int _first, int _second) {
-        this.first = _first;
-        this.second = _second;
+// User function Template for Java
+class Pair{
+    int first;
+    int second;
+    Pair(int first, int second){
+        this.first = first;
+        this.second = second;
     }
 }
 
 class Solution {
     public static List<Integer> shortestPath(int n, int m, int edges[][]) {
+        // code here
         ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
-        for (int i = 0; i <= n; i++) {
+        for(int i=0; i<=n ; i++){
             adj.add(new ArrayList<>());
         }
-        for (int i = 0; i < m; i++) {
-            int u = edges[i][0];
-            int v = edges[i][1];
-            int w = edges[i][2];
-            adj.get(u).add(new Pair(v, w));
-            adj.get(v).add(new Pair(u, w));
+        for(int i=0; i<m; i++){
+            adj.get(edges[i][0]).add(new Pair(edges[i][1], edges[i][2]));
+            adj.get(edges[i][1]).add(new Pair(edges[i][0], edges[i][2]));
         }
-        PriorityQueue<Pair> pq = new PriorityQueue<>((x, y) -> x.first - y.first);
-        int[] dist = new int[n + 1];
-        int[] parent = new int[n + 1];
-        for (int i = 1; i <= n; i++) {
-            dist[i] = (int) 1e9;
-            parent[i] = i;
+        PriorityQueue<Pair> pq = new PriorityQueue<Pair>((x, y)-> x.first-y.first);
+        int[] dist = new int[n+1];
+        int parent[] = new int[n+1];
+        for(int i=1; i<=n; i++){
+            dist[i] = (int)(1e9);
+            parent[i] =i;
         }
-        dist[1] = 0;
+        dist[1] =0;
         pq.add(new Pair(0, 1));
-        while (!pq.isEmpty()) {
+        while(pq.size()!=0){
             Pair it = pq.peek();
             int node = it.second;
             int dis = it.first;
             pq.remove();
-            for (Pair itr : adj.get(node)) {
+            
+            for(Pair itr: adj.get(node)){
                 int adjNode = itr.first;
-                int edgeWeight = itr.second;
-                if (dis + edgeWeight < dist[adjNode]) {
-                    dist[adjNode] = dis + edgeWeight;
-                    pq.add(new Pair(dist[adjNode], adjNode));
-                    parent[adjNode] = node;
+                int edw = itr.second;
+                if(dis+edw<dist[adjNode]){
+                    dist[adjNode]=dis+edw;
+                    pq.add(new Pair(dis+edw, adjNode));
+                    parent[adjNode]= node;
                 }
             }
         }
         List<Integer> path = new ArrayList<>();
-        if (dist[n] == (int) 1e9) {
+        if(dist[n]==1e9){
             path.add(-1);
             return path;
         }
-        int node = n;
-        while (parent[node] != node) {
+        int node =n;
+        while(parent[node]!=node){
             path.add(node);
             node = parent[node];
         }
