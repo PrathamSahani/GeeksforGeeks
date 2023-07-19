@@ -33,18 +33,18 @@ class Solution
 {
     int numberOfSubarrays(int arr[], int N, int target){
         // code here
-      return getCount(arr, target)-getCount(arr, target-1);
+        return f(arr, target)-f(arr, target-1);
     }
-  int getCount(int arr[], int target){
-        int j=0, c=0, sum =0;
-        for(int i=0; i<arr.length; i++){
-            sum = sum + arr[i];
-            while( sum > target)
-            {
-                sum = sum - arr[j++];
-            }
-            c = c + i-j+1;
-        }
-        return c;
-    }
+    
+     public int f(int arr[], int target){
+         int j=0, sum=0;int cnt =0;
+         for(int i=0; i<arr.length; i++){
+             sum+=arr[i];
+             while(sum>target){
+                 sum-=arr[j++];
+             }
+             cnt+=i-j+1;
+         }
+         return cnt;
+     }
 }
