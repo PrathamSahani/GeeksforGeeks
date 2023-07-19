@@ -50,13 +50,24 @@ class Solution {
              res1[i] = sum1;
              res2[i] = sum2;
              int diff = res1[i] - res2[i];
-            if (diff == 0) {
-                maxLen = i + 1;
-            } else if (!map.containsKey(diff)) {
-                map.put(diff, i);
-            } else {
-                maxLen = Math.max(maxLen, i - map.get(diff));
-            }
+             
+             if(diff==0){
+                 maxLen = i+1;
+             }
+             if(map.containsKey(diff)){
+                 maxLen = Math.max(maxLen , i-map.get(diff));
+                 
+             }
+             if(!map.containsKey(diff)){
+                 map.put(diff, i);
+             }
+            // if (diff == 0) {
+            //     maxLen = i + 1;
+            // } else if (!map.containsKey(diff)) {
+            //     map.put(diff, i);
+            // } else {
+            //     maxLen = Math.max(maxLen, i - map.get(diff));
+            // }
          }
          return maxLen;
     
