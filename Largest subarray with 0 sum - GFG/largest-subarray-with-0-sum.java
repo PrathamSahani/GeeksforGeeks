@@ -40,11 +40,12 @@ class GfG
             if(sum==0){
                 max = i+1;
             }
-            else {
+            else{
                 if(map.get(sum)!=null){
-                    max = Math.max(max, i-map.get(sum));
+                    max = Math.max(max,i-map.get(sum));
                 }else{
                     map.put(sum, i);
+                
                 }
             }
         }
