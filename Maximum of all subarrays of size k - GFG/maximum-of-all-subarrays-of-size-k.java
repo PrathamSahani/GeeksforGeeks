@@ -48,27 +48,30 @@ class Main
 // } Driver Code Ends
 
 
-
-
 //User function template for JAVA
 
 class Solution
 {
     //Function to find maximum of each subarray of size k.
-    static ArrayList <Integer> max_of_subarrays(int arr[], int n, int k)
+    static ArrayList <Integer> max_of_subarrays(int nums[], int n, int k)
     {
         // Your code here
-     
-        ArrayList<Integer> list = new ArrayList<>();
-        for(int i=0; i<n-k+1; i++){
-               int max = Integer.MIN_VALUE;
-            for(int j=i; j<i+k; j++){
-                max = Math.max(max, arr[j]);
+      ArrayList<Integer> list = new ArrayList<>();
+     int ans = 0;
+        Deque<Integer> q = new ArrayDeque<>();
+        for(int i=0; i<nums.length; i++){
+            if(!q.isEmpty() && q.peek()==i-k){
+                q.poll();
             }
-            list.add(max);
-            if(arr[i]==-1){
-                max = 0;
+            while(!q.isEmpty() && nums[q.peekLast()]<=nums[i]){
+                q.pollLast();
             }
+            q.add(i);
+            if(i>=k-1){
+             list.add(nums[q.peek()]);
+            }
+
+
         }
         return list;
     }
