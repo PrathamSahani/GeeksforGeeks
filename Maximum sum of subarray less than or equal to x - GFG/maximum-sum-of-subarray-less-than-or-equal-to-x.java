@@ -19,19 +19,19 @@ class Solution
     long findMaxSubarraySum(long arr[], int N,int X)
     {
         // Your code goes here
-           long max = Long.MIN_VALUE;
-            long sum =0;
-            int left =0;
-            for(int i=0; i<N; i++){
-                sum+=arr[i];
-                while(sum>X && left<=arr.length-1){
-                    sum-=arr[left];
-                    left++;
-                }
-                max =Math.max(max, sum);
-            }
-         
-         return max;
+          long max = Long.MIN_VALUE;
+          int left =0;
+          long sum =0;
+          for(int i=0; i<N; i++){
+              sum+=arr[i];
+              while(sum>X ){
+                  sum-=arr[left];
+                  left++;
+              }
+              max = Math.max(max, sum);
+          }
+          return max;
+          
     }
 }
 
