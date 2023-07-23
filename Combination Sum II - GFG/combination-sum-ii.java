@@ -54,25 +54,24 @@ class GFG {
 
 class Solution {
     
-    public static void find(int ind, int arr[], int target, List<List<Integer>> ans, List<Integer> ds){
+    public static void f(int ind, int[] arr, int target,  List<List<Integer>> list,  List<Integer> ds){
         if(target==0){
-            ans.add(new ArrayList<>(ds));
+            list.add(new ArrayList<>(ds));
             return ;
         }
         for(int i=ind; i<arr.length; i++){
             if(i>ind && arr[i]==arr[i-1])continue;
             if(arr[i]>target)break;
             ds.add(arr[i]);
-            find(i+1, arr, target-arr[i], ans, ds);
+            f(i+1, arr, target-arr[i], list, ds);
             ds.remove(ds.size()-1);
         }
     }
-    
     public static List<List<Integer>> combinationSum2(int[] a, int s) {
-        
-        List<List<Integer>> list =new ArrayList<>();
+        List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(a);
-        find(0, a, s, list, new ArrayList<>());
+        f(0, a, s, list, new ArrayList<>());
         return list;
+        
     }
 }
