@@ -41,17 +41,18 @@ class Solution {
     public static int equilibriumPoint(long arr[], int n) {
 
         // Your code here
-        int left =0, right =0;
-        for(int i=0; i<n; i++){
+        int right =0, left =0;
+        for(int i=0; i<arr.length; i++){
             right+=arr[i];
+            
         }
-        for(int i=0; i<n; i++){
+        for(int i=0; i<arr.length; i++){
             right-=arr[i];
             if(left==right){
-                return i+1;
-            }
-            left+=arr[i];
+                 return i+1;
+            }left+=arr[i];
         }
         return -1;
     }
+    
 }
