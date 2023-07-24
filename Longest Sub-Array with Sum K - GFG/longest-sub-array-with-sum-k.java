@@ -43,29 +43,49 @@ class Array {
 
 // } Driver Code Ends
 
+
+//User function Template for Java
+
 class Solution{
     
    
     // Function for finding maximum and value pair
     public static int lenOfLongSubarr (int A[], int N, int K) {
         //Complete the function
-        Map<Integer, Integer> preSumMap = new HashMap<>();
-        int sum=0;
-        int maxLen=0;
-        for(int i=0; i<N; i++)
-        {
+        HashMap<Integer, Integer> map = new HashMap<>();
+        int sum =0, max =0;
+        for(int i=0; i<N; i++){
             sum+=A[i];
-            //initially(Base Condition)
-            if(sum==K) maxLen=Math.max(maxLen,i+1);
-            
+            if(sum==K)max = i+1;
             int rem = sum-K;
-            if(preSumMap.containsKey(rem)) maxLen=Math.max(maxLen,i-preSumMap.get(rem));
-            if (!preSumMap.containsKey(sum)) {
-                preSumMap.put(sum, i);
+            if(map.containsKey(rem)){
+                max = Math.max(max, i-map.get(rem));
+            }
+            if(!map.containsKey(sum)){
+                map.put(sum, i);
             }
         }
-        return maxLen;
+        return max;
+        //   Map<Integer, Integer> preSumMap = new HashMap<>();
+        // int sum=0;
+        // int maxLen=0;
+        // for(int i=0; i<N; i++)
+        // {
+        //     sum+=A[i];
+        //     //initially(Base Condition)
+        //     if(sum==K) maxLen=Math.max(maxLen,i+1);
+            
+        //     int rem = sum-K;
+        //     if(preSumMap.containsKey(rem)) maxLen=Math.max(maxLen,i-preSumMap.get(rem));
+        //     if (!preSumMap.containsKey(sum)) {
+        //         preSumMap.put(sum, i);
+        //     }
+        // }
+        // return maxLen;
+    
     }
     
     
 }
+
+
