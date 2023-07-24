@@ -56,8 +56,8 @@ class Solution
     static ArrayList <Integer> max_of_subarrays(int nums[], int n, int k)
     {
         // Your code here
-      ArrayList<Integer> list = new ArrayList<>();
-     int ans = 0;
+          ArrayList<Integer> list = new ArrayList<>();
+        int ans = 0;
         Deque<Integer> q = new ArrayDeque<>();
         for(int i=0; i<nums.length; i++){
             if(!q.isEmpty() && q.peek()==i-k){
@@ -68,7 +68,7 @@ class Solution
             }
             q.add(i);
             if(i>=k-1){
-             list.add(nums[q.peek()]);
+                list.add(nums[q.peek()]);
             }
 
 
