@@ -129,32 +129,23 @@ class Node
 
 
 class Solution{
+    
+    public void Right(Node root, ArrayList<Integer> list, int level){
+        if(root == null) return;
+        if(level == list.size()){
+            list.add(root.data);
+        }
+        Right(root.right, list, level+1);
+        Right(root.left, list, level+1);
+    }
     //Function to return list containing elements of right view of binary tree.
-    ArrayList<Integer> rightView(Node root) {
-        //add code here.'
-         ArrayList<Integer> list = new ArrayList<>();
-         Queue<Node> q = new LinkedList<>();
-         if(root==null)return list;
-         q.add(root);
-         while(!q.isEmpty()){
-             int n = q.size();
-             for(int i=0; i<n; i++){
-                  Node temp = q.poll();
-                 if(i==n-1)
-                list.add(temp.data);
-                 if(temp.left!=null)
-                 q.add(temp.left);
-                 if(temp.right!=null)
-                 q.add(temp.right);
-             }
-         }
-         return list;
+    ArrayList<Integer> rightView(Node node) {
+        //add code here.
+        ArrayList<Integer> list = new ArrayList<>();
+        Right(node, list, 0);
+        return list;
     }
 }
-
-
-
-
 
 
 
