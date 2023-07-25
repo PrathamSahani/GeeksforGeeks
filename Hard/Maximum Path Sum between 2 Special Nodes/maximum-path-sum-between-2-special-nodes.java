@@ -118,29 +118,43 @@ class GFG {
 } */
 class Solution
 {
-    int c = Integer.MIN_VALUE;
-    int ans = Integer.MIN_VALUE;
+     
     int maxPathSum(Node root)
     { 
-        if(root.left!=null && root.right!=null){
-            f(root);
-            return ans;
-        }
         // code here 
-     int d = f(root);
-     return Math.max(ans, d);
+        int max[]=new int[1];
+            max[0]=Integer.MIN_VALUE;
+
+        int res=findPath(root,max);
+
+        if(root.left==null || root.right==null) return Math.max(max[0],res);//test case:5 N 6 -5 5 ,when root acts as leaf. 
+
+        return max[0];
+
     } 
-    int f(Node root){
-        if(root==null)return c;
-        if(root.left==null && root.right ==null){
-            return root.data;
-        }
-        int l = f(root.left);
-        int r = f(root.right);
-        int max = Math.max(l, r);
-        if(l!=c && r!=c){
-            ans = Math.max(ans, l+r+root.data);
-        }
-        return max+root.data;
-    }
+
+    int findPath(Node node,int max[]){
+
+        if(node==null) return 0;
+
+        int left=findPath(node.left,max);
+
+        int right=findPath(node.right,max);
+
+        // left child is null , rightside sum is -ve/+ve consider that
+
+        if (node.left == null) return right + node.data;
+
+        // right child is null
+
+        if (node.right == null) return left + node.data;
+
+       //max calculates the maximum of max sum path across a node.
+
+        max[0]=(Math.max(left + right + node.data, max[0]));
+
+        // non leaf node
+
+        return Math.max(left, right) + node.data;
+    } 
 }
