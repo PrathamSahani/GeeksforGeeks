@@ -25,29 +25,29 @@ class GFG {
 
 
 class Solution {
-   static int findMax(int arr[]){
-       int maxi= Integer.MIN_VALUE;
-       for(int i=0; i<arr.length; i++){
-           maxi= Math.max(maxi, arr[i]);
-       }
-       return maxi;
-   }
-   static int solve(int arr[],int  hour){
-       int ans =0;
-       for(int i=0;i<arr.length; i++){
-           ans+=Math.ceil((double)arr[i]/(double)hour);
-       }
-       return ans;
-   }
+    public static int f(int arr[]){
+        int max = Integer.MIN_VALUE;
+        for(int i=0; i<arr.length; i++){
+            max = Math.max(max, arr[i]);
+        }
+        return max;
+    }
+    public static int f(int arr[], int hour){
+        int max =0;
+        for(int i=0; i<arr.length; i++){
+            max += Math.ceil((double)arr[i]/(double)hour);
+        }
+        return max;
+    }
     public static int Solve(int N, int[] piles, int H) {
         // code here
-        int low = 0, high = findMax(piles);
+        int low = 1, high = f(piles);
         while(low<=high){
             int mid = (low+high)/2;
-            int ans = solve(piles, mid);
+            int ans = f(piles, mid);
             if(ans<=H){
-                high =mid-1;
-            }else{
+                high = mid-1;
+            }else {
                 low = mid+1;
             }
         }
