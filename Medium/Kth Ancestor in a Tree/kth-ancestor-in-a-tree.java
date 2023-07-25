@@ -146,14 +146,3 @@ class Solution
         return list.get(k-1);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
