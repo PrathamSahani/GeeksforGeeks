@@ -52,39 +52,35 @@ class Pair {
 
 class Solve {
     static int floor(int arr[], int n, int x){
-        int low =0;
-        int high = n-1;
-        int ans =-1;
+        int low =0, high = n-1;int ans =-1;
         while(low<=high){
             int mid = low+(high-low)/2;
             if(arr[mid]<=x){
                 ans = arr[mid];
                 low = mid+1;
-            }else{
+            }else {
                 high = mid-1;
             }
-            }
-            return ans;
+            
         }
-        static int ceil(int arr[], int n, int x){
-            int low = 0;int high = n-1;
-            int ans = -1;
-            while(low<=high){
-                int mid = low+(high-low)/2;
-                if(arr[mid]>=x){
-                    ans = arr[mid];
-                    high = mid-1;
-                }else{
+        return ans;
+    }
+    static int ceil(int arr[], int n, int x){
+        int ans =-1, low =0 , high = n-1;
+        while(low<=high){
+            int mid = low+(high-low)/2;
+            if(arr[mid]>=x){
+                ans  = arr[mid];
+                high = mid-1;
+                }else {
                     low = mid+1;
                 }
-            }
-            return ans;
-        }
+            }return ans;
+    }
     Pair getFloorAndCeil(int[] arr, int n, int x) {
         // code here
         Arrays.sort(arr);
-        return new Pair(floor(arr,n, x), ceil(arr, n, x));
-   
+        return new Pair(floor(arr, n, x), ceil(arr, n, x));
     }
 }
 
