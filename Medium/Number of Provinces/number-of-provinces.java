@@ -32,27 +32,24 @@ class GFG {
 //User function Template for Java
 
 class Solution {
-    public static void dfs(int j, ArrayList<ArrayList<Integer>> adj, boolean[] vis){
-        vis[j] =true;
-         for(int i=0; i<adj.size(); i++){
-             if(vis[i]==false && adj.get(j).get(i)==1){
-                 dfs(i, adj, vis);
-             }
-         }
-        
+    static void f(int j, ArrayList<ArrayList<Integer>> adj, boolean vis[]){
+        vis[j]= true;
+        for(int i=0; i<adj.size(); i++){
+            if(vis[i]==false && adj.get(j).get(i)==1){
+                f(i, adj, vis);
+            }
+        }
     }
     static int numProvinces(ArrayList<ArrayList<Integer>> adj, int V) {
         // code here
-        int cnt =0;
+        int c=0;
         boolean vis[] = new boolean[V];
-        for(int i=0; i<V; i++){
+        for(int i=0; i<adj.size(); i++){
             if(vis[i]==false){
-                dfs(i, adj, vis);
-                cnt++;
+                f(i, adj, vis);
+                c++;
             }
-            
         }
-        return cnt;
+        return c;
     }
 };
-
