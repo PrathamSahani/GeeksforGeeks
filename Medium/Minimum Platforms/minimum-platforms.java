@@ -60,11 +60,11 @@ class Solution
                 platform--;
                 j++;
             }
-            if(platform>res){
-                res = platform;
-            }
+            res = Math.max(res, platform);
         }
         return res;
+  
+        
     }
     
 }
