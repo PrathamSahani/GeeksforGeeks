@@ -35,15 +35,14 @@ class Solution {
         if(ind<0)return 0;
         if(ind==0)return arr[ind];
         if(dp[ind]!=-1)return dp[ind];
-        int pick = arr[ind]+ f(ind-2, arr, dp);
+        int pick = arr[ind]+f(ind-2, arr, dp);
         int np = 0+ f(ind-1, arr, dp);
-        return dp[ind]=Math.max(np, pick);
-    } 
-    int findMaxSum(int res[], int n) {
+        return dp[ind] = Math.max(pick, np);
+    }
+    int findMaxSum(int arr[], int n) {
         // code here
-        
-        int dp[] = new int[res.length];
+        int dp[] = new int[n];
         Arrays.fill(dp, -1);
-        return f(res.length-1, res, dp);
+        return f(arr.length-1, arr, dp);
     }
 }
