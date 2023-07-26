@@ -34,26 +34,20 @@ class GFG
 //User function Template for Java
 
 class Solution{
-    
-   static int f(int i, int[] arr, int sum, int[][] dp) {
-        if (sum == 0) return 1;
-        if (i == 0) return (arr[0] == sum) ? 1 : 0;
-        if (dp[i][sum] != -1) return dp[i][sum];
-
-        int ntake = f(i - 1, arr, sum, dp);
-        int take = 0;
-        if (sum >= arr[i]) {
-            take = f(i - 1, arr, sum - arr[i], dp);
-        }
-        return dp[i][sum] = (ntake | take); // Use | instead of || for int values (1 for true, 0 for false)
+    public static boolean f(int ind, int target, int arr[], int dp[][]){
+        if(target==0)return true;
+        if(ind<0 || target<0)return false;
+        if(dp[ind][target]!=-1)return dp[ind][target]==target;
+        boolean result = f(ind-1, target, arr, dp) || f(ind-1, target-arr[ind], arr, dp);
+        dp[ind][target] = result?1:0;
+        return result;
     }
-    static Boolean isSubsetSum(int n, int arr[], int sum){
+    static Boolean isSubsetSum(int n, int arr[], int k){
         // code here
-        // int n = arr.length;
-        int[][] dp = new int[n][sum + 1];
-        for (int[] row : dp) {
+        int dp[][] = new int[n][k+1];
+        for(int row[]: dp){
             Arrays.fill(row, -1);
         }
-        return f(n - 1, arr, sum, dp) == 1; 
+        return f(n-1, k, arr, dp);
     }
 }
