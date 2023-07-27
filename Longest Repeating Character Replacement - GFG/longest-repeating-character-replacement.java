@@ -86,19 +86,20 @@ class GFG {
 // User function Template for Java
 
 class Solution {
-    static int characterReplacement(String s, int k) {
+    static int characterReplacement(String S, int K) {
         // code here
-       int i=0, max =0;
-       int arr[] = new int[26];
-       for(int j=0;j<s.length(); j++){
-           arr[s.charAt(j)-'A']++;
-           max = Math.max(max, arr[s.charAt(j)-'A']);
-           if(j-i+1-max>k){
-               arr[s.charAt(i)-'A']--;
-               i++;
-           }
-       }
-       return s.length()-i;
+        int i=0, max=0;
+        int arr[] = new int[26];
+        for(int j=0; j<S.length(); j++){
+            arr[S.charAt(j)-'A']++;
+            max = Math.max(max, arr[S.charAt(j)-'A']);
+            if(j-i+1-max>K){
+                arr[S.charAt(i)-'A']--;
+                i++;
+            }
+        }
+        return S.length()-i;
         
     }
 }
+ 
