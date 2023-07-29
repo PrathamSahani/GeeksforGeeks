@@ -108,45 +108,64 @@ class GfG {
 
 
 //User function Template for Java
-class Solution{
-    //Function to find the vertical order traversal of Binary Tree.
-    static class pair{
-        int d;
+class Solution
+{
+    static class Pair{
+        int hd;
         Node node;
-        pair(int d,Node node){
-            this.d = d;
+        
+        Pair(int hd, Node node){
+            this.hd = hd;
             this.node = node;
         }
     }
-    static ArrayList <Integer> verticalOrder(Node root){
+    //Function to find the vertical order traversal of Binary Tree.
+    static ArrayList <Integer> verticalOrder(Node root)
+    {
         // add your code here
-        Map<Integer,ArrayList<Integer>> mp = new TreeMap<>();
-        Queue<pair> q = new LinkedList<>();
-        q.add(new pair(0,root));
+        Queue<Pair> q = new LinkedList<>();
+        Map<Integer, ArrayList<Integer>> map = new TreeMap<>();
+        q.add(new Pair(0, root));
         while(!q.isEmpty()){
-            pair cur = q.poll();
-            if(mp.containsKey(cur.d)){
-                mp.get(cur.d).add(cur.node.data);
-            }else{
-                ArrayList<Integer> a = new ArrayList<>();
-                a.add(cur.node.data);
-                mp.put(cur.d,a);
-            }
-            if(cur.node.left!=null){
-                q.add(new pair(cur.d-1,cur.node.left));
-            }
-            if(cur.node.right!=null){
-                q.add(new pair(cur.d+1,cur.node.right));
-            }
+            Pair it = q.poll();
+            int hd = it.hd;
+            Node temp = it.node;
+          if(map.containsKey(hd)){
+              map.get(hd).add(temp.data);
+          }else{
+              ArrayList<Integer> list = new ArrayList<>();
+              list.add(temp.data);
+              map.put(hd, list);
+          }
+          if(temp.left!=null){
+              q.add(new Pair(hd-1, temp.left));
+          }if(temp.right!=null){
+              q.add(new Pair(hd+1, temp.right));
+          }
         }
-        ArrayList<Integer> res = new ArrayList<>();
-       //System.out.println(mp);
-        for(ArrayList<Integer>i : mp.values()){
-            for(Integer x : i){
+        
+        ArrayList<Integer> res= new ArrayList<>();
+        for(ArrayList<Integer> i: map.values())
+        {
+            for(Integer x:i){
                 res.add(x);
             }
         }
         return res;
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
