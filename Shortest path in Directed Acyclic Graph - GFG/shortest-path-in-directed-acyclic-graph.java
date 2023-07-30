@@ -27,66 +27,67 @@ class Main {
 }
 // } Driver Code Ends
 
-// import java.util.*;
 
-class Solution {
-
-    public int[] shortestPath(int N, int M, int[][] edges) {
-        ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
-        for (int i = 0; i < N; i++) {
-            adj.add(new ArrayList<>());
-        }
-
-        int[] indegree = new int[N];
-        for (int i = 0; i < M; i++) {
-            int u = edges[i][0];
-            int v = edges[i][1];
-            int wt = edges[i][2];
-            adj.get(u).add(new Pair(v, wt));
-            indegree[v]++;
-        }
-
-        int[] dist = new int[N];
-        Arrays.fill(dist, Integer.MAX_VALUE);
-        dist[0] = 0;
-
-        Queue<Integer> queue = new LinkedList<>();
-        for (int i = 0; i < N; i++) {
-            if (indegree[i] == 0) {
-                queue.add(i);
-            }
-        }
-
-        while (!queue.isEmpty()) {
-            int node = queue.poll();
-            for (Pair neighbor : adj.get(node)) {
-                int v = neighbor.first;
-                int wt = neighbor.second;
-
-                if (dist[node] != Integer.MAX_VALUE && dist[node] + wt < dist[v]) {
-                    dist[v] = dist[node] + wt;
-                }
-
-                indegree[v]--;
-                if (indegree[v] == 0) {
-                    queue.add(v);
-                }
-            }
-        }
-
-        for (int i = 0; i < N; i++) {
-            if (dist[i] == Integer.MAX_VALUE)
-                dist[i] = -1;
-        }
-        return dist;
+class Pair{
+    int first, second;
+    Pair(int first, int second){
+        this.first = first;
+        this.second = second;
     }
 }
+//User function Template for Java
+class Solution {
 
-class Pair {
-    int first, second;
-
-    Pair(int _first, int _second) {
-        this.first = _first;
-        this.second = _second;
-    }
+	public int[] shortestPath(int N,int M, int[][] edges) {
+		//Code here\
+		ArrayList<ArrayList<Pair>> adj = new ArrayList<>();
+		for(int i=0; i<N; i++){
+		    adj.add(new ArrayList<>());
+		}
+		int ans[] = new int[N];
+		for(int i=0; i<M; i++){
+		    int u = edges[i][0];
+		    int v = edges[i][1];
+		    int wt = edges[i][2];
+		    adj.get(u).add(new Pair(v, wt));
+		    ans[v]++;
+		}
+		int dist[] = new int[N];
+		Arrays.fill(dist, Integer.MAX_VALUE);
+		dist[0] =0;
+		Queue<Integer> q = new LinkedList<>();
+		for(int i=0; i<N; i++){
+		    if(ans[i]==0)
+		    q.add(i);
+		}
+		while(!q.isEmpty()){
+		    int node = q.poll();
+		    for(Pair neighbor: adj.get(node)){
+		        int v = neighbor.first;
+		        int wt = neighbor.second;
+		        
+		        if(dist[node]!=Integer.MAX_VALUE && dist[node]+wt<dist[v]){
+		            dist[v] = dist[node]+wt;
+		        }
+		        ans[v]--;
+		        if(ans[v]==0){
+		            q.add(v);
+		        }
+		    }
+		}
+		for(int i=0; i<N; i++){
+		    if(dist[i]==Integer.MAX_VALUE)
+		    dist[i] =-1;
+		}
+		return dist;
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	}
 }
