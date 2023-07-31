@@ -123,6 +123,7 @@ class Node{
     }
 }
 */
+
 class Pair{
     int hd;
     Node node;
@@ -131,14 +132,12 @@ class Pair{
         this.node = node;
     }
 }
-
 class Solution
 {
     //Function to return a list of nodes visible from the top view 
     //from left to right in Binary Tree.
     static ArrayList<Integer> topView(Node root)
     {
-        // add your code
         Map<Integer, Integer> map = new TreeMap<>();
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(0, root));
@@ -148,20 +147,26 @@ class Solution
             Node temp = it.node;
             if(map.get(hd)==null){
                 map.put(hd, temp.data);
-            }if(temp.left!=null){
-                q.add(new Pair(hd-1, temp.left));
-            }if(temp.right!=null){
-                q.add(new Pair(hd+1, temp.right));
             }
-            
+            if(temp.left!=null)
+            {
+                q.add(new Pair(hd-1, temp.left));
+            }
+            if(temp.right !=null){
+            q.add(new Pair(hd+1, temp.right));
+            }
         }
-        ArrayList<Integer> list = new ArrayList<>();
+        ArrayList<Integer> res = new ArrayList<>();
         for(Map.Entry<Integer, Integer> entry : map.entrySet()){
-            list.add(entry.getValue());
-        }return list;
+            res.add(entry.getValue());
+        }
         
+        return res;
     }
 }
+
+
+
 
 
 
