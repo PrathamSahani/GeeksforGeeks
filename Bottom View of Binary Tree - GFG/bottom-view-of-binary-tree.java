@@ -115,7 +115,14 @@ class GfG {
 
 
 //User function Template for Java
-
+class Pair{
+    int hd;
+    Node node;
+    Pair(int hd, Node node){
+        this.hd = hd;
+        this.node = node;
+    }
+}
 
 class Solution
 {
@@ -123,26 +130,26 @@ class Solution
     public ArrayList <Integer> bottomView(Node root)
     {
         // Code here
-        Queue<Node> q = new LinkedList<>();
-        Map<Integer, Integer> mp = new TreeMap<>();
-        root.hd =0;
-        q.add(root);
+        Map<Integer, Integer> map = new TreeMap<>();
+        Queue<Pair> q = new LinkedList<>();
+
+        q.add(new Pair(0, root));
         while(!q.isEmpty()){
-            Node temp = q.poll();
-            int hd = temp.hd;
-              mp.put(hd, temp.data);
-             if(temp.left!=null){
-                 temp.left.hd = hd-1;
-                 q.add(temp.left);
-             }if(temp.right!=null){
-                 temp.right.hd = hd+1;
-                 q.add(temp.right);
-             }
+           Pair it = q.poll();
+           Node temp = it.node;
+           int hd = it.hd;
+          map.put(hd, temp.data);
+           if(temp.left!=null){
+              q.add(new Pair(hd-1, temp.left));
+           }if(temp.right!=null){
+               q.add(new Pair(hd+1, temp.right));
+           }
         }
         ArrayList<Integer> res = new ArrayList<>();
-        for(Map.Entry<Integer, Integer> entry : mp.entrySet()){
+        for(Map.Entry<Integer, Integer> entry : map.entrySet()){
             res.add(entry.getValue());
         }
         return res;
     }
+    
 }
