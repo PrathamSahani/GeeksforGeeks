@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab">Minimum Spanning Tree</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a weighted, undirected and connected graph of <strong>V</strong> vertices and <strong>E</strong> edges. The task is to find the sum of weights of the edges of the&nbsp;Minimum Spanning Tree.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/minimum-spanning-tree/1">Minimum Spanning Tree</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size: 18px;">Given a weighted, undirected and connected graph of <strong>V</strong> vertices and <strong>E</strong> edges. The task is to find the sum of weights of the edges of the&nbsp;Minimum Spanning Tree.</span></p>
 <p>&nbsp;</p>
 <p><span style="font-size: 18px;"><strong>Example 1:</strong></span></p>
 <pre><span style="font-size: 18px;"><strong>Input:
