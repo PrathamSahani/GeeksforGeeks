@@ -126,47 +126,24 @@ class Node
 
 class Tree
 {
-    public ArrayList<Integer> reverseLevelOrder(Node node) 
+    public ArrayList<Integer> reverseLevelOrder(Node root) 
     {
         // code here
         ArrayList<Integer> list = new ArrayList<>();
-        if(node==null)return list;
         Queue<Node> q = new LinkedList<>();
-        q.add(node);
+        q.add(root);
         while(!q.isEmpty()){
-           
-           
+            int n = q.size();
+            for(int i=0; i<n; i++){
                 Node temp = q.poll();
                 list.add(temp.data);
-                if(temp.left!=null)
-                q.add(temp.left);
                 if(temp.right!=null)
                 q.add(temp.right);
-                
-            
-            
+                if(temp.left!=null)
+                q.add(temp.left);
+            }
         }
-        // Collections.sort(list);
         Collections.reverse(list);
         return list;
     }
 }      
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
