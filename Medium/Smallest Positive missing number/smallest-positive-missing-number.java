@@ -11,14 +11,16 @@ class Solution
     static int missingNumber(int arr[], int size)
     {
         // Your code here
-        Arrays.sort(arr);
-        int num =1;
-        for(int i=0; i<size; i++){
-            if(num==arr[i]){
-                num++;
-            }
-        }
-        return num;
+       Arrays.sort(arr);
+       int num =1;
+       for(int i=0; i<size; i++){
+           if(arr[i]>0){
+               if(arr[i]==num){
+                   num++;
+               }
+           }
+       }
+       return num;
     }
 }
 
