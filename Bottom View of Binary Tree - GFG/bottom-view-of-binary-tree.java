@@ -115,6 +115,7 @@ class GfG {
 
 
 //User function Template for Java
+
 class Pair{
     int hd;
     Node node;
@@ -123,7 +124,6 @@ class Pair{
         this.node = node;
     }
 }
-
 class Solution
 {
     //Function to return a list containing the bottom view of the given tree.
@@ -132,24 +132,23 @@ class Solution
         // Code here
         Map<Integer, Integer> map = new TreeMap<>();
         Queue<Pair> q = new LinkedList<>();
-
         q.add(new Pair(0, root));
         while(!q.isEmpty()){
-           Pair it = q.poll();
-           Node temp = it.node;
-           int hd = it.hd;
-          map.put(hd, temp.data);
-           if(temp.left!=null){
-              q.add(new Pair(hd-1, temp.left));
-           }if(temp.right!=null){
-               q.add(new Pair(hd+1, temp.right));
-           }
+            Pair it = q.poll();
+            int hd = it.hd;
+            Node temp = it.node;
+            map.put(hd, temp.data);
+            if(temp.left!=null){
+                q.add(new Pair(hd-1, temp.left));
+            }if(temp.right!=null){
+                q.add(new Pair(hd+1, temp.right));
+            }
         }
-        ArrayList<Integer> res = new ArrayList<>();
+        ArrayList<Integer> list = new ArrayList<>();
         for(Map.Entry<Integer, Integer> entry : map.entrySet()){
-            res.add(entry.getValue());
+            list.add(entry.getValue());
         }
-        return res;
+        return list;
     }
     
 }
