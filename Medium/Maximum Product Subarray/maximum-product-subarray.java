@@ -28,14 +28,23 @@ class Solution {
     // Function to find maximum product subarray
     long maxProduct(int[] arr, int n) {
         // code here
-        long max = Integer.MIN_VALUE;
-        for(int i=0; i<n; i++){
-            long cs =1;
-            for(int j=i; j<n; j++){
-                cs*=arr[j];
-                max = Math.max(max, cs);
+        long mul =1;
+        long ans = Integer.MIN_VALUE;
+        for(int i=0; i<arr.length; i++){
+            mul*=arr[i];
+            ans = Math.max(ans, mul);
+            if(mul==0){
+                mul=1;
             }
         }
-        return max;
+        mul =1;
+        for(int i=arr.length-1; i>=0; i--){
+            mul*=arr[i];
+            
+            ans = Math.max(ans, mul);
+            if(mul==0)
+            mul =1;
+        }
+        return ans;
     }
 }
