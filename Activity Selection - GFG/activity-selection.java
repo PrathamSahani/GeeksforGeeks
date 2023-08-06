@@ -39,35 +39,27 @@ class Main
 // } Driver Code Ends
 
 
-
-class Activity{
-    int start;
-    int end ;
-    Activity(int a , int b){
-        this.start = a;
-        this.end =b;
-    }
-}
 class Solution
 {
-    
+    //Function to find the maximum number of activities that can
+    //be performed by a single person.
     public static int activitySelection(int start[], int end[], int n)
     {
         // add your code here
-         Activity[]  res = new Activity[n];
+        int res[][] = new int[n][2];
         for(int i=0; i<n; i++){
-            res[i] = new Activity(start[i], end[i]);
+            res[i][0] = start[i];
+            res[i][1] = end[i];
         }
-        Arrays.sort(res ,(x,y)->x.end-y.end);
-        int count =0;
-        int last =0;
+        Arrays.sort(res, (a, b)-> a[1]-b[1]);
+        int count =0, last=0;
         for(int i=0; i<n; i++){
-            if(res[i].start>last){
-                count++;
-                last = res[i].end;
+            if(res[i][0]>last){
+            count++;
+            last = res[i][1];
             }
         }
         return count;
-        
     }
+    
 }
