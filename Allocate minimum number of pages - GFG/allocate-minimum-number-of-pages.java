@@ -29,63 +29,43 @@ class GFG {
 // } Driver Code Ends
 
 
-//User function Template for Java
 
 class Solution 
 {
     //Function to find minimum number of pages.
-    public static boolean allocation(int [] A, int student, int target){
-        int pages=0,  total=1;
-        for(int i=0; i<A.length; i++){
-            if(A[i]>target){
-                return false;
-            }
-            if(pages+A[i]>target){
-                total+=1;
-                pages= A[i];
-            }else{
-                pages+=A[i];
+    public static int f(ArrayList<Integer> arr, int pages){
+        int n = arr.size();
+        int student = 1;
+        long page = 0;
+        for (int i = 0; i < n; i++) {
+            if (page + arr.get(i) <= pages) {
+                page += arr.get(i);
+            } else {
+                student++;
+                page = arr.get(i);
             }
         }
-        if(total>student)return false;
-        return true;
+        return student;
     }
-    public static int findPages(int[]A,int N,int M)
-    {
+
+    public static int findPages(int[] A, int N, int M) {
         //Your code here
-        if(M>N)return -1;
-        int low = A[0];int high = 0;
-        for(int i=0; i<N; i++){
-            high+=A[i];
+        ArrayList<Integer> arr = new ArrayList<>();
+        for (int i = 0; i < N; i++) {
+            arr.add(A[i]);
         }
-        int res =-1;
-        while(low<=high){
-            int mid = low+(high-low)/2;
-            if(allocation(A, M, mid)){
-                res = mid;
-                high = mid-1;
-            }else{
-                low = mid+1;
-            }
+
+        if (M > N) return -1;
+        int low = Collections.max(arr);
+        int high = arr.stream().mapToInt(Integer::intValue).sum();
+        while (low <= high) {
+            int mid = (low + high) / 2;
+            int student = f(arr, mid);
+            if (student > M)
+                low = mid + 1;
+            else
+                high = mid - 1;
         }
-        return res;
+        return low;
     }
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
