@@ -33,21 +33,21 @@ class Solution {
         return max;
     }
     public static int f(int arr[], int hour){
-        int max =0;
+        int ans =0;
         for(int i=0; i<arr.length; i++){
-            max += Math.ceil((double)arr[i]/(double)hour);
+            ans += (int)Math.ceil((double)arr[i]/(double)hour);
         }
-        return max;
+        return ans;
     }
     public static int Solve(int N, int[] piles, int H) {
         // code here
-        int low = 1, high = f(piles);
+        int low =0, high = f(piles);
         while(low<=high){
             int mid = (low+high)/2;
             int ans = f(piles, mid);
             if(ans<=H){
                 high = mid-1;
-            }else {
+            }else{
                 low = mid+1;
             }
         }
