@@ -52,14 +52,15 @@ class Solution
             res[i][1] = end[i];
         }
         Arrays.sort(res, (a, b)-> a[1]-b[1]);
-        int count =0, last=0;
+        int last =0, count =0;
         for(int i=0; i<n; i++){
             if(res[i][0]>last){
-            count++;
-            last = res[i][1];
+                count++;
+                last = res[i][1];
             }
         }
         return count;
+        
     }
     
 }
