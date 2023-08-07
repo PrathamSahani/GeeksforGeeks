@@ -36,8 +36,8 @@ class Solution
     //Function to find minimum number of pages.
     public static int f(ArrayList<Integer> arr, int pages){
         int n = arr.size();
-        int student=1;
-        long page = 0;
+        int student =1;
+        long page =0;
         for(int i=0; i<n; i++){
             if(page+arr.get(i)<=pages){
                 page+=arr.get(i);
@@ -46,7 +46,7 @@ class Solution
                 page = arr.get(i);
             }
         }
-        return student;
+        return student ;
     }
     public static int findPages(int[]A,int N,int M)
     {
@@ -55,21 +55,18 @@ class Solution
         for(int i=0; i<N; i++){
             arr.add(A[i]);
         }
-        int low = Collections.max(arr);
-        int sum =0;
-        for(int i=0; i<N; i++){
-            sum+=A[i];
-        }
+        
+        
         if(M>N)return -1;
-        int high = sum;
+        int low = Collections.max(arr);
+        int high = arr.stream().mapToInt(Integer:: intValue).sum();
         while(low<=high){
             int mid = (low+high)/2;
-            int student = f(arr, mid);
-            if(student>M){
-               low = mid+1;
-            }else {
+            int ans = f(arr, mid);
+            if(ans<=M){
                 high = mid-1;
-                
+            }else{
+                low = mid+1;
             }
         }
         return low;
