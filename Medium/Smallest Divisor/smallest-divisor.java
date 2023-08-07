@@ -31,7 +31,7 @@ class GFG {
 
 class Solution {
     public static int f(int arr[]){
-        int max = Integer.MIN_VALUE;
+        int max=Integer.MIN_VALUE;
         for(int i=0; i<arr.length; i++){
             max = Math.max(max, arr[i]);
         }
@@ -39,23 +39,22 @@ class Solution {
     }
     public static int f(int arr[], int hour){
         int ans =0;
-        for(int i=0; i<arr.length; i++){
+        for(int i=0;i<arr.length; i++){
             ans+=Math.ceil((double)arr[i]/(double)hour);
         }
         return ans;
     }
     public static int smallestDivisor(int[] nums, int K) {
-           int low =1, high = f(nums);
-           while(low<=high){
-               int mid = (low+high)/2;
-               int ans = f(nums, mid);
-               if(ans<=K){
-                   high =mid-1;
-               }else{
-                   low = mid+1;
-               }
-           }
-           return low;
-        
+        int low = 1, high = f(nums);
+        while(low<=high){
+            int mid = (low+high)/2;
+            int ans = f(nums, mid);
+            if(ans<=K){
+                high =mid-1;
+            }else{
+                low = mid+1;
+            }
+        }
+        return low;
     }
 }
