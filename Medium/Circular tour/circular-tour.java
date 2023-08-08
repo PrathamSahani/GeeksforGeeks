@@ -47,20 +47,20 @@ class Solution
 {
     //Function to find starting point where the truck can start to get through
     //the complete circle without exhausting its petrol in between.
-    int tour(int petrol[], int distance[])
+    int tour(int petrol[], int cost[])
     {
-	// Your code here	
-	          int balance = 0, lastbalance = 0;
-        int index = 0;
-        for(int i = 0; i<petrol.length; i++) {
-            balance += petrol[i]-distance[i];
-            if(balance<0) {
-                index = i+1;
-                lastbalance += balance;
-                balance = 0;
+	// Your code here
+	  int first =0, last=0;
+        int idx =0;
+        for(int i=0; i<petrol.length; i++){
+            first+=petrol[i]-cost[i];
+            if(first<0){
+                idx = i+1;
+                last +=first;
+                first =0;
             }
         }
-        if(balance<-lastbalance) return -1;
-        return index;
+        if(first< -last)return -1;
+        return idx;
     }
 }
