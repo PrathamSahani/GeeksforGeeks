@@ -157,27 +157,29 @@ class GfG {
     // Function to connect nodes at the same level.
     public void connect(Node root)
     {
-          if (root == null) return;
+         if(root==null)return ;
+      Queue<Node> q = new LinkedList<>();
+      q.add(root);
+      q.add(null);
+      while(!q.isEmpty()){
+          Node cur = q.poll();
+          if(cur==null && q.isEmpty()){
+              return ;
+          }
+          if(cur==null){
+              q.add(null);
+          }
+          else{
+              cur.nextRight = q.peek();
+              if(cur.left!=null){
+                  q.add(cur.left);
+              }
+              if(cur.right!=null){
+                  q.add(cur.right);
+              }
+          }
 
-        Queue<Node> q = new LinkedList<>();
-        q.add(root);
-
-        while (!q.isEmpty()) {
-            int size = q.size();
-            Node prev = null;
-
-            for (int i = 0; i < size; i++) {
-                Node temp = q.poll();
-
-                if (i != 0) {
-                    prev.nextRight = temp;
-                }
-
-                prev = temp;
-
-                if (temp.left != null) q.add(temp.left);
-                if (temp.right != null) q.add(temp.right);
-            }
-        }
+      }
+      return ;
     }
 }
