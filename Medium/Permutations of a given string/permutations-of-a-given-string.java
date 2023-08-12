@@ -30,38 +30,31 @@ class GFG
 
 
 class Solution {
-    static String swap(String s, int l , int r){
-        char ch[] = s.toCharArray();
+    public static String swap(String ans, int l, int r){
+        char ch[] = ans.toCharArray();
         char temp = ch[l];
         ch[l] = ch[r];
         ch[r] = temp;
-        String ans = new String(ch);
-        return ans;
+        String a = new String(ch);
+        return a;
     }
-    static void permutation(String s, int l, int h, Set<String> set){
+    public static void find(String str, int l, int h, Set<String> set){
         if(l==h){
-            set.add(s);
-            return ;
+            set.add(str);
+            return;
         }
         for(int i=l; i<=h; i++){
-            s = swap(s, l, i);
-            permutation(s, l+1, h, set);
-            s = swap(s, l, i);
+            str = swap(str, l, i);
+            find(str, l+1, h, set);
+            str = swap(str, l, i);
         }
     }
     public List<String> find_permutation(String S) {
         // Code here
-        Set<String> set = new HashSet<>();
-        permutation(S, 0, S.length()-1, set);
-        List<String> ans = new ArrayList<>(set);
-        Collections.sort(ans);
-        return ans;
+        HashSet<String> set = new HashSet<>();
+        find(S, 0, S.length()-1, set);
+        List<String> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return list;
     }
 }
-
-
-
-
-
-
-
