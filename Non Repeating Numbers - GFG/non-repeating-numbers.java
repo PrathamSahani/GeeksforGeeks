@@ -33,25 +33,24 @@ class GFG
 // } Driver Code Ends
 
 
-//User function Template for Java
 
-class Solution
-{
-    public int[] singleNumber(int[] nums)
-    {
-        // Code here
-        ArrayList<Integer> list = new ArrayList<>();
-         Arrays.sort(nums);
-         int i=0;
-         while(i<nums.length){
-            if(i+1<nums.length && nums[i+1]==nums[i]) i+=2;
-             else {list.add(nums[i]);i++;}
-          
-         }
-         int res[] = new int[list.size()];
-         for(i=0;i<list.size(); i++){
-             res[i] = list.get(i);
-         }
-         return res;
-      }
+class Solution {
+    public int[] singleNumber(int[] nums) {
+          ArrayList<Integer> list = new ArrayList<>();
+          int i=0;
+          Arrays.sort(nums);
+          while(i<nums.length){
+              if(i+1<nums.length && nums[i+1]==nums[i]){
+                  i+=2;
+              }else{
+                  list.add(nums[i]);
+                  i++;
+              }
+          }
+          int res[] = new int[list.size()];
+          for(i=0; i<list.size(); i++){
+              res[i]= list.get(i);
+          }
+          return res;
+    }
 }
