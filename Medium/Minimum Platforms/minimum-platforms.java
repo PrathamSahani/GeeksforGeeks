@@ -48,24 +48,19 @@ class Solution
     static int findPlatform(int arr[], int dep[], int n)
     {
         // add your code here
+      Arrays.sort(dep);
         Arrays.sort(arr);
-        Arrays.sort(dep);
-        int platform =1, res =1;
-        int i=1, j=0;
-        while(i<n && j<n){
-            if(arr[i]<=dep[j]){
-                platform++;
-                i++;
-            }else if(arr[i]>dep[j]){
-                platform--;
-                j++;
+        int  i=0; int j = 0; int p=1;
+        while(i<n-1){
+            if(dep[j]>=arr[i+1]){
+                i++;p++;
+            }else{
+                j++;i++;
             }
-            res = Math.max(res, platform);
         }
-        return res;
-  
+        return p;
         
-    }
+}
     
 }
 
