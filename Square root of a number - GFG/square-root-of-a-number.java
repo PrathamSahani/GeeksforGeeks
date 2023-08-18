@@ -26,21 +26,17 @@ this function*/
 // x: element to find square root
 class Solution
 {
-     long floorSqrt(long x)
+     long floorSqrt(long n)
 	 {
 		// Your code here
-	  long low =1, high = x;
-	  long ans = 1;
-	  while(low<=high){
-	      long mid = (low+high)/2;
-	      if(mid*mid<=x){
-	        
-	          low = mid+1;
-	      }else{
-	          high = mid-1;
-	      }
-	      
-	  }
-	  return high;
+	   long ans =1;
+	   for(int i=0; i<=n; i++){
+	       if(i*i<=n){
+	           ans = i;
+	       }else{
+	           break;
+	       }
+	   }
+	   return ans;
 	 }
 }
