@@ -32,20 +32,19 @@ class Solution
     {
         // your code here
         long max =0;
-        Stack<Long> st = new Stack<>();
+        Stack<Integer> st = new Stack<Integer>();
         for(int i=0; i<=hist.length; i++){
             while(!st.isEmpty() && (i==n || hist[i]<=hist[st.peek().intValue()])){
                 long height = hist[st.pop().intValue()];
                 long width;
                 if(st.isEmpty()){
-                    width =i;
+                    width = i;
                 }else{
                     width = i-st.peek().intValue()-1;
                 }
-                 max = Math.max(max, height*width);
-}
-st.push((long)i);
-           
+                max = Math.max(max, height*width);
+            }
+            st.push(i);
         }
         return max;
     }
