@@ -29,36 +29,34 @@ class GFG {
 //User function Template for Java
 
 class Solution {
-    public static int f(int arr[], int d){
+    public static int fund(int arr[], int d){
         int day =1;
         int ans =0;
         for(int i=0; i<arr.length; i++){
-            if(ans+arr[i]<=d){
-                ans+= arr[i];
+            if(arr[i]+ans<=d){
+                ans+=arr[i];
             }else{
                 day++;
-                ans=arr[i];
+                ans = arr[i];
             }
         }
         return day;
     }
     static int leastWeightCapacity(int[] arr, int N, int D) {
         // code here
-        int low =0;
-        int high =0;
+        int low =0, high =0;
         for(int i=0; i<N; i++){
-            high+=arr[i];
             low= Math.max(low, arr[i]);
+            high+=arr[i];
         }
         while(low<=high){
             int mid = (low+high)/2;
-            int ans = f(arr, mid);
+            int ans = fund(arr, mid);
             if(ans<=D){
                 high = mid-1;
             }else{
                 low = mid+1;
             }
-            
         }
         return low;
     }
