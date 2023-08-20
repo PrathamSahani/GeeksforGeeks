@@ -35,33 +35,37 @@ class GFG
 // } Driver Code Ends
 
 
-class Solution
-{
-    public boolean f(int node, int col, int color[], ArrayList<ArrayList<Integer>> adj){
-        color[node] = col;
-        for(int it: adj.get(node)){
-            if(color[it]==-1)
-            {
-                if(f(it, 1-col, color, adj)==false)
-                return false;
-            }else if(color[it]==col){
-                return false;
-            }
-        }
-        return true;
+
+class Solution {
+    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>> adj) {
+        int[] color = new int[V]; // Create an array to store colors (0 for uncolored, 1 for color A, -1 for color B).
         
-    }
-    public boolean isBipartite(int V, ArrayList<ArrayList<Integer>>adj)
-    {
-        // Code here
-        int color[] = new int[V];
-        for(int i=0; i<V; i++)
-        color[i] =-1;
-        for(int i=0; i<V; i++){
-            if(color[i]==-1){
-                if(f(i, 0, color, adj)==false)return false;
+        // Loop through each node in the graph.
+        for (int node = 0; node < V; node++) {
+            if (color[node] == 0) { // If the current node is uncolored, start BFS.
+                Queue<Integer> queue = new LinkedList<>();
+                queue.add(node); // Add the current node to the queue.
+                color[node] = 1; // Color the current node with color A (1).
+
+                while (!queue.isEmpty()) {
+                    int current = queue.poll(); // Get the current node from the queue.
+                    
+                    // Loop through the neighbors of the current node.
+                    for (int neighbor : adj.get(current)) {
+                        // If the neighbor is uncolored, assign the opposite color and add it to the queue.
+                        if (color[neighbor] == 0) {
+                            color[neighbor] = -color[current];
+                            queue.add(neighbor);
+                        } else if (color[neighbor] == color[current]) {
+                            // If the neighbor has the same color as the current node, the graph is not bipartite.
+                            return false;
+                        }
+                    }
+                }
             }
         }
+        
+        // If we've checked all nodes and there are no conflicts in coloring, the graph is bipartite.
         return true;
     }
 }
