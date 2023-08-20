@@ -41,20 +41,20 @@ class Pair{
 }
 class Solution {
     int minimumMultiplications(int[] arr, int start, int end) {
+
         // Your code here
         Queue<Pair> q = new LinkedList<>();
         q.add(new Pair(start, 0));
         int dist[] = new int[100000];
-        Arrays.fill(dist,Integer.MAX_VALUE);
+        Arrays.fill(dist, Integer.MAX_VALUE);
         dist[start] =0;
         int mod = 100000;
-        int n = arr.length;
-        
         while(!q.isEmpty()){
             int node = q.peek().first;
             int step = q.peek().second;
             q.remove();
-            for(int i=0; i<n; i++){
+            
+            for(int i=0; i<arr.length; i++){
                 int num = (int)(((long)arr[i]*node)%mod);
                 if(step+1<dist[num]){
                     dist[num] = step+1;
@@ -62,8 +62,9 @@ class Solution {
                     q.add(new Pair(num, step+1));
                 }
             }
-        }if(dist[end]==Integer.MAX_VALUE){
-            return -1;
+        }
+        if(dist[end]==Integer.MAX_VALUE){
+            dist[end] =-1;
         }
         return dist[end];
     }
