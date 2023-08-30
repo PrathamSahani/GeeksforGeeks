@@ -30,51 +30,40 @@ class GFG
 // } Driver Code Ends
 
 
-class Solution {
-    static long minTime(int[] arr, int n, int k) {
-        // Find the maximum element in the array.
-        int maxElement = Integer.MIN_VALUE;
-        for (int i = 0; i < n; i++) {
-            maxElement = Math.max(maxElement, arr[i]);
-        }
-        
-          long totalSum = 0;
-        for (int i = 0; i < n; i++) {
-            totalSum += arr[i];
-        }
-      
-        long low = maxElement; 
-        long high = totalSum;   
+//User function Template for Java
 
-        while (low < high) {
-            long mid = low + (high - low) / 2;
-            int paintersRequired = getPaintersRequired(arr, n, mid);
-
-            if (paintersRequired <= k) {
-                high = mid;
-            } else {
-                low = mid + 1;
+ class Solution{
+     static long f1(int arr[], long  k){
+         int part =1;
+         long sub =0;
+         for(int i=0; i<arr.length; i++){
+             if(sub+arr[i]<=k){
+                 sub+=arr[i];
+             }else{
+                 part++;
+                 sub = arr[i];
+             }
+         }
+         return part;
+     }
+    static long minTime(int[] arr,int n,int k){
+        //code here
+        long low = arr[0];
+        long high = 0;
+        for(int i=0; i<n; i++){
+            low = Math.max(low, arr[i]);
+            high+=arr[i];
+        }
+        while(low<=high){
+            long mid = (low+high)/2;
+            long ans = f1(arr, mid);
+            if(ans<=k){
+                high = mid-1;
+            }else{
+                low = mid+1;
             }
         }
-        
-        return low; 
-    }
-    
-    
-    static int getPaintersRequired(int[] arr, int n, long timeLimit) {
-        int painters = 1;
-        long currentSum = 0;
-        
-        for (int i = 0; i < n; i++) {
-            if (currentSum + arr[i] > timeLimit) {
-                painters++;
-                currentSum = arr[i];
-            } else {
-                currentSum += arr[i];
-            }
-        }
-        
-        return painters;
+        return low;
     }
 }
 
