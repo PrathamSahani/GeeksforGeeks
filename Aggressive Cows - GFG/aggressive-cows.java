@@ -33,7 +33,7 @@ class GFG {
 
 // User function Template for Java
 class Solution {
-    public static int f(int[] arr, int mid, int k){
+    public static int f(int arr[], int mid, int k){
         int dist = arr[0];
         int count =1;
         for(int i=0; i<arr.length; i++){
@@ -45,17 +45,17 @@ class Solution {
         return count;
     }
     public static int solve(int n, int k, int[] stalls) {
-        Arrays.sort(stalls);
-        int min =1;
-        int max =0;
+        // Arrays.sort(stalls);
+        int min = 1;
+        int max=0;
         for(int i=0; i<stalls.length; i++){
             max = Math.max(max, stalls[i]);
         }
-        int low = min, high = max;
-    int ans =0;
+        int low =min, high = max;
+        int ans =0;
         while(low<=high){
             int mid = (low+high)/2;
-             int count = f(stalls, mid, k);
+            int count = f(stalls, mid, k);
             if(count<k){
                 high = mid-1;
             }else{
@@ -64,6 +64,5 @@ class Solution {
             }
         }
         return ans;
-        
     }
 }
