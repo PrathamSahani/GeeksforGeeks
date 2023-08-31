@@ -92,81 +92,62 @@ class GFG
 
 // } Driver Code Ends
 
+
 //User function Template for Java
+
 // class Node  
-// {
+// { 
 //     int data; 
 //     Node left, right; 
+   
 //     public Node(int d)  
 //     { 
 //         data = d; 
 //         left = right = null; 
-//     }
+//     } 
 // }
 
 class Solution
 {
-    static boolean isLeaf(Node root){
-        return (root.left==null) && (root.right==null);
-    }
-    void addLeft(Node root, ArrayList<Integer> res)
-    {
-        Node cur = root.left;
-        while(cur!=null){
-            if(isLeaf(cur)==false) res.add(cur.data);
-            if(cur.left!=null) cur = cur.left;
-            else cur = cur.right;
-        }
-    }
-    void addRight(Node root, ArrayList<Integer> res){
-        Node cur = root.right;
-        ArrayList<Integer> temp = new ArrayList<>();
-        while(cur!=null){
-            if(isLeaf(cur)==false)temp.add(cur.data);
-            if(cur.right!=null)cur = cur.right;
-            else cur = cur.left;
-        }
-        for(int i=temp.size()-1; i>=0; i--){
-            res.add(temp.get(i));
-        }
-    }
-    void addLeave(Node root, ArrayList<Integer> res){
-        if(isLeaf(root))
-        {
-            res.add(root.data);
-            return ;
-        }
-        if(root.left!=null)addLeave(root.left, res);
-        if(root.right!=null)addLeave(root.right, res);
-    }
-	ArrayList <Integer> boundary(Node node)
+	ArrayList <Integer> boundary(Node root)
 	{
-	    ArrayList<Integer> ans = new ArrayList<>();
-	    if(isLeaf(node)==false)ans.add(node.data);
-	    addLeft(node, ans);
-	    addLeave(node, ans);
-	    addRight(node, ans);
-	    return ans;
+	    ArrayList<Integer> list = new ArrayList<>();
+	    if(root.left==null && root.right==null){
+	        list.add(root.data);
+	        return list;
+	    }
+	    list.add(root.data);
+	    left(root.left, list);
+	    leaf(root, list);
+	    right(root.right, list);
+	    return list;
+	    
 	    
 	}
+	 void left(Node root, ArrayList<Integer> list){
+	     if(root==null || (root.left==null && root.right==null))return ;
+	      list.add(root.data);
+	     if(root.left!=null){
+	     left(root.left,list);
+	     }else if(root.right!=null){
+	         left(root.right, list);
+	     }
+	 }
+	 void right(Node root, ArrayList<Integer> list){
+	     if(root==null || (root.left==null && root.right==null))return ;
+	     if(root.right!=null){
+	         right(root.right, list);
+	     }else if(root.left!=null){
+	         right(root.left, list);
+	     }
+	     list.add(root.data);
+	 }
+	 void leaf(Node root, ArrayList<Integer> list){
+	     if(root==null){return ;}
+	     if(root.right==null && root.left==null){list.add(root.data);
+	     return;
+	     }
+	     leaf(root.left, list);
+	     leaf(root.right, list);
+	 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
