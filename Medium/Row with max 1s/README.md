@@ -1,4 +1,4 @@
-<h2><a href="https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1?page=2&company[]=Snapdeal&sortBy=submissions">Row with max 1s</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a boolean 2D array of n x m dimensions where each row is sorted. Find&nbsp;the&nbsp;0-based index of the first row&nbsp;that has&nbsp;the maximum number of <strong>1's</strong>.</span></p>
+<h2><a href="https://practice.geeksforgeeks.org/problems/row-with-max-1s0023/1?page=2&category[]=Arrays&sortBy=submissions">Row with max 1s</a></h2><h3>Difficulty Level : Medium</h3><hr><div class="problems_problem_content__Xm_eO"><p><span style="font-size:18px">Given a boolean 2D array of n x m dimensions where each row is sorted. Find&nbsp;the&nbsp;0-based index of the first row&nbsp;that has&nbsp;the maximum number of <strong>1's</strong>.</span></p>
 
 <p><span style="font-size:18px"><strong>Example 1:</strong></span></p>
 
