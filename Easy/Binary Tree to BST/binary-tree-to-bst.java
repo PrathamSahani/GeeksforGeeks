@@ -117,34 +117,43 @@ class Node
 
 class Solution
 {
-    
-    static void f(Node root, ArrayList<Integer> list){
+    // The given root is the root of the Binary Tree
+    // Return the root of the generated BST
+    void inorder(Node root, ArrayList<Integer> list){
         if(root==null)return ;
-        f(root.left, list);
         list.add(root.data);
-        f(root.right, list);
+        inorder(root.left, list);
+        inorder(root.right, list);
     }
-    static Node f(ArrayList<Integer> list, int l, int r){
-        // if(root==null)return null ;
+    Node res( ArrayList<Integer> list, int l, int r){
         if(l>r)return null;
         int mid = (l+r)/2;
         Node root = new Node(list.get(mid));
-        root.left = f(list, l, mid-1);
-        root.right = f(list, mid+1, r);
+        root.left = res(list, l, mid-1);
+        root.right  = res(list, mid+1, r);
         return root;
     }
-    // The given root is the root of the Binary Tree
-    // Return the root of the generated BST
     Node binaryTreeToBST(Node root)
     {
        // Your code here
-       if(root==null)return root;
        ArrayList<Integer> list = new ArrayList<>();
-       f(root, list);
+       inorder(root, list);
        Collections.sort(list);
-      return   f(list, 0, list.size()-1);
-    //   return Node
+        return res(list, 0, list.size()-1);
+
        
     }
 }
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  
