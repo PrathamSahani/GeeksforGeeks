@@ -37,19 +37,15 @@ class Solution
     public static boolean isLucky(int n)
     {
         // Your code here
-       int size = n;
-       int i=2;
-       if(n==2)
-       return false;
-       while(i<size)
-       {
-           if(n%i==0)
-           return false;
-           
-           n = n - n/i;
-           i++;
-           size--;
-       }
-       return true;
+        int i=2;
+      while(i<=n){
+          if(n%i==0){
+              return false;
+          }
+          n = n-(n/i);
+          i++;
+      }
+      return true;
+        
     }
 }
