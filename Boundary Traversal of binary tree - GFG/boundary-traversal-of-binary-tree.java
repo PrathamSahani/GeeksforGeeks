@@ -111,7 +111,7 @@ class Solution
 {
 	ArrayList <Integer> boundary(Node root)
 	{
-	    ArrayList<Integer> list = new ArrayList<>();
+	   ArrayList<Integer> list = new ArrayList<>();
 	    if(root.left==null && root.right==null){
 	        list.add(root.data);
 	        return list;
@@ -129,19 +129,21 @@ class Solution
 	    }
 	    list.add(root.data);
 	    if(root.left!=null){
-	    left(root.left, list);
+	        left(root.left, list);
 	    }
 	    else if(root.right!=null){
 	        left(root.right, list);
 	    }
+	    
 	}
 	void right(Node root, ArrayList<Integer> list){
 	    if(root==null || (root.left==null && root.right==null)){
-	        return;
+	        return ;
 	    }
 	    if(root.right!=null){
-	        right(root.right , list);
-	    }else if(root.left!=null){
+	        right(root.right, list);
+	    }
+	    else if(root.left!=null){
 	        right(root.left, list);
 	    }
 	    list.add(root.data);
@@ -154,6 +156,7 @@ class Solution
 	        list.add(root.data);
 	        return ;
 	    }
+	  
 	    leaf(root.left, list);
 	    leaf(root.right, list);
 	}
