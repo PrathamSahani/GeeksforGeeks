@@ -108,15 +108,15 @@ class GfG {
 
 
 //User function Template for Java
+
 class Pair{
     int hd;
     Node node;
     Pair(int hd, Node node){
-        this.hd = hd;
+        this.hd  = hd;
         this.node = node;
     }
 }
-
 class Solution
 {
     //Function to find the vertical order traversal of Binary Tree.
@@ -129,43 +129,25 @@ class Solution
         while(!q.isEmpty()){
             Pair it = q.poll();
             int hd = it.hd;
-            Node temp= it.node;
+            Node temp = it.node;
             if(map.containsKey(hd)){
                 map.get(hd).add(temp.data);
             }else{
                 ArrayList<Integer> list = new ArrayList<>();
                 list.add(temp.data);
                 map.put(hd, list);
-            }
-            if(temp.left!=null){
+            }if(temp.left!=null){
                 q.add(new Pair(hd-1, temp.left));
             }if(temp.right!=null){
                 q.add(new Pair(hd+1, temp.right));
             }
         }
-        ArrayList<Integer> list = new ArrayList<>();
-        for(ArrayList<Integer> x: map.values()){
-            for(int i: x){
-                list.add(i);
-            }
-        }
-        return list;
+        ArrayList<Integer> res = new ArrayList<>();
+         for(ArrayList<Integer> x: map.values()){
+             for(int i: x){
+                 res.add(i);
+             }
+         }
+         return res;
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
