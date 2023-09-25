@@ -139,21 +139,20 @@ class Solution {
                 list.add(temp.data);
                 map.put(hd, list);
             }
-            
             if (temp.left != null) {
                 q.add(new Pair(hd - 1, temp.left));
-            }
-            
+            } 
             if (temp.right != null) {
                 q.add(new Pair(hd + 1, temp.right));
             }
         }
-        
         // Create the result list by iterating over the map values.
         ArrayList<Integer> result = new ArrayList<>();
-        for (ArrayList<Integer> values : map.values()) {
-            result.addAll(values);
-        }
+         for(ArrayList<Integer> i: map.values()){
+             for(int x:i){
+                 result.add(x);
+             }
+         }
         
         return result;
     }
