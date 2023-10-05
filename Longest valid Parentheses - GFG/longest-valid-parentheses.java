@@ -23,24 +23,24 @@ class GFG{
 //User function Template for Java
 
 class Solution{
-    static int maxLength(String s){
+    static int maxLength(String S){
         // code here
+        int res =0;
         Stack<Integer> st = new Stack<>();
-        st.push(-1); int max =0;
-        for(int i=0; i<s.length(); i++){
-            char c = s.charAt(i);
-            if(c=='('){
+        st.push(-1);
+        for(int i=0;i<S.length(); i++){
+            if(S.charAt(i)=='('){
                 st.push(i);
             }else{
                 st.pop();
                 if(st.size()>0){
-                    max = Math.max(max, i-st.peek());
-                }
-                else{
+                    int len = i-st.peek();
+                    res = Math.max(res, len);
+                }else{
                     st.push(i);
                 }
             }
         }
-        return max;
+        return res;
     }
 }
