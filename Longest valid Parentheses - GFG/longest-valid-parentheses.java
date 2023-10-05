@@ -25,22 +25,22 @@ class GFG{
 class Solution{
     static int maxLength(String S){
         // code here
-        int res =0;
-        Stack<Integer> st = new Stack<>();
-        st.push(-1);
-        for(int i=0;i<S.length(); i++){
-            if(S.charAt(i)=='('){
-                st.push(i);
-            }else{
-                st.pop();
-                if(st.size()>0){
-                    int len = i-st.peek();
-                    res = Math.max(res, len);
-                }else{
-                    st.push(i);
-                }
-            }
-        }
-        return res;
+       int res =0;
+       Stack<Integer> st = new Stack<>();
+       st.push(-1);
+       for(int i=0; i<S.length(); i++){
+           if(S.charAt(i)=='('){
+               st.push(i);
+           }else{
+               st.pop();
+               if(st.size()>0){
+                   int len = i-st.peek();
+                   res = Math.max(res, len);
+               }else{
+                   st.push(i);
+               }
+           }
+       }
+       return res;
     }
 }
