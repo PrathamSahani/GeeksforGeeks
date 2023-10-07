@@ -27,44 +27,43 @@ class FindMinCost
 // } Driver Code Ends
 
 
-
+/*Complete the function given below*/
 class Solution {
-    public int ans(int arr[]) {
-        int max = 0;
+    public static int swap(int arr[]){
+        int max =0;
         Stack<Integer> st = new Stack<>();
-        for (int i = 0; i <= arr.length; i++) {
-            while (!st.isEmpty() && (i == arr.length || arr[i] <= arr[st.peek()])) {
+        for(int i=0; i<=arr.length; i++){
+            while(!st.isEmpty() && (i==arr.length || arr[i]<=arr[st.peek()])){
                 int height = arr[st.pop()];
                 int width;
-                if (st.isEmpty()) {
+                if(st.isEmpty()){
                     width = i;
-                } else {
-                    width = i - st.peek() - 1;
+                }else{
+                    width = i-st.peek()-1;
                 }
-                max = Math.max(max, height * width);
+                max = Math.max(max, height*width);
             }
             st.push(i);
+            
         }
         return max;
     }
-
     public int maxArea(int M[][], int n, int m) {
-        if (M.length == 0 || M[0].length == 0)
-            return 0;
-        int row = M.length;
-        int col = M[0].length;
-        int max = 0;
-        int hist[] = new int[col];
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
-                if (M[i][j] == 1) {
-                    hist[j]++;
-                } else {
-                    hist[j] = 0;
+        // add code here.
+        int max =0;
+        if(M==null || n==0 || m==0)return 0;
+        int res[] = new int[m];
+        for(int i=0; i<n; i++){
+            for(int j=0; j<m; j++){
+                if(M[i][j]==1){
+                    res[j]++;
+                }else{
+                    res[j]=0;
                 }
             }
-            max = Math.max(max, ans(hist));
+            max = Math.max(max, swap(res));
         }
         return max;
+        
     }
 }
