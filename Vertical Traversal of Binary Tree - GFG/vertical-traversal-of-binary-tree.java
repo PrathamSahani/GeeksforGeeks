@@ -107,53 +107,68 @@ class GfG {
 // } Driver Code Ends
 
 
-
-class Pair {
-    int hd;
+//User function Template for Java
+class Pair{
     Node node;
-
-    Pair(int hd, Node node) {
-        this.hd = hd;
+    int first;
+    Pair(Node node, int first){
         this.node = node;
+        this.first = first;
     }
 }
 
-class Solution {
-    // Function to find the vertical order traversal of Binary Tree.
-    static ArrayList<Integer> verticalOrder(Node root) {
+class Solution
+{
+    //Function to find the vertical order traversal of Binary Tree.
+    static ArrayList <Integer> verticalOrder(Node root)
+    {
+        // add your code here
         Map<Integer, ArrayList<Integer>> map = new TreeMap<>();
         Queue<Pair> q = new LinkedList<>();
-        
-        q.add(new Pair(0, root));
-        
-        while (!q.isEmpty()) {
+        q.add(new Pair(root, 0));
+        while(!q.isEmpty()){
             Pair it = q.poll();
-            int hd = it.hd;
             Node temp = it.node;
-            
-            // Add the current node's data to the corresponding horizontal distance in the map.
-            if (map.containsKey(hd)) {
+            int hd = it.first;
+            if(map.containsKey(hd)){
                 map.get(hd).add(temp.data);
-            } else {
+            }else{
                 ArrayList<Integer> list = new ArrayList<>();
                 list.add(temp.data);
                 map.put(hd, list);
             }
-            if (temp.left != null) {
-                q.add(new Pair(hd - 1, temp.left));
-            } 
-            if (temp.right != null) {
-                q.add(new Pair(hd + 1, temp.right));
+            if(temp.left!=null){
+                q.add(new Pair( temp.left, hd-1));
+            }if(temp.right!=null){
+                q.add(new Pair( temp.right, hd+1));
+            }
+            
+        }
+        
+        ArrayList<Integer> list = new ArrayList<>();
+        for(ArrayList<Integer> li : map.values()){
+            for(int x: li){
+                list.add(x);
             }
         }
-        // Create the result list by iterating over the map values.
-        ArrayList<Integer> result = new ArrayList<>();
-         for(ArrayList<Integer> i: map.values()){
-             for(int x:i){
-                 result.add(x);
-             }
-         }
-        
-        return result;
+        return list;
     }
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
