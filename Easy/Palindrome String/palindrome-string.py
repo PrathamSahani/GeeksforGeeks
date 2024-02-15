@@ -2,13 +2,17 @@
 class Solution:
 	def isPalindrome(self, S):
 		# code here
-		lists = S[::-1]
-		if lists ==S:
-		    return 1
-		else:
-		    return 0
 		
-
+		S = S.replace(" ", "").lower()
+        
+        # Check if the string is equal to its reverse
+        if S == S[::-1]:
+            return 1
+        else:
+            return 0
+		
+		
+		
 
 #{ 
  # Driver Code Starts
