@@ -1,15 +1,16 @@
 #User function Template for python3
-
-from math import sqrt
+from math import *
 
 class Solution:
-    def isPrime (self, n):
+    def isPrime (self, N):
         # code here
-        if n<=1:
+        
+        if N<=1:
             return 0
-        else:  
-            for i in range(2, int(sqrt(n))+1):
-                if n%i==0:
+            
+        else:
+            for i  in range(2, int(sqrt(N))+1):
+                if N%i==0:
                     return 0
             return 1
 
