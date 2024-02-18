@@ -5,8 +5,8 @@ class Solution:
     def doUnion(self,a,n,b,m):
         
         #code here
-        union = set(a) | set(b)
-        ans = list(union)
+        merge = a+b
+        ans = set(merge)
         return len(ans)
 
 
