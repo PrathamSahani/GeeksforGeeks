@@ -125,10 +125,10 @@ class Tree
     //Function to return list containing elements of left view of binary tree.
     ArrayList<Integer> leftView(Node root)
     {
-      // Your code here\
-      
+        
+      // Your code here
       ArrayList<Integer> list = new ArrayList<>();
-      if(root==null) return list;
+      if(root==null)return list;
       Queue<Node> q = new LinkedList<>();
       q.add(root);
       while(!q.isEmpty()){
@@ -140,16 +140,17 @@ class Tree
               }
               if(temp.left!=null){
                   q.add(temp.left);
-              }
-              if(temp.right!=null){
+              }if(temp.right!=null){
                   q.add(temp.right);
               }
           }
-          
       }
       return list;
     }
 }
+
+
+
 
 
 
