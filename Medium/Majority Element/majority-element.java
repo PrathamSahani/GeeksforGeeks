@@ -34,23 +34,15 @@ class Solution
     static int majorityElement(int a[], int size)
     {
         // your code here
-        Arrays.sort(a);
-        if(size==1)
-      return a[0];
-        
-        int count =1;
-       
-        for(int i=1; i<size; i++){
-            if(a[i]==a[i-1]){
-                count++;
-            }else{
-                count =1;
-            }
-            if(count>size/2){
-            return  a[i];
+        HashMap<Integer, Integer> map = new HashMap<>();
+        for(int i=0; i<size; i++){
+            map.put(a[i], map.getOrDefault(a[i], 0)+1);
+        }
+        for(Map.Entry<Integer, Integer> it: map.entrySet()){
+            if(it.getValue()>size/2){
+                return it.getKey();
             }
         }
-        
         return -1;
     }
 }
