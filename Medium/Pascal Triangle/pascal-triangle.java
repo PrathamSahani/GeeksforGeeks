@@ -33,7 +33,7 @@ class GFG {
 class Solution {
     ArrayList<Long> nthRowOfPascalTriangle(int n) {
         // code here
-        ArrayList<Long> list = new ArrayList<>();
+         ArrayList<Long> list = new ArrayList<>();
         for(int i=0; i<n; i++){
             ArrayList<Long> l1 = new ArrayList<>();
             for(int j=0; j<=i; j++){
@@ -48,3 +48,4 @@ class Solution {
         return list;
     }
 }
+
