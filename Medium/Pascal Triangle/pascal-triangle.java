@@ -33,19 +33,18 @@ class GFG {
 class Solution {
     ArrayList<Long> nthRowOfPascalTriangle(int n) {
         // code here
-         ArrayList<Long> list = new ArrayList<>();
+        ArrayList<Long> list = new ArrayList<>();
         for(int i=0; i<n; i++){
-            ArrayList<Long> l1 = new ArrayList<>();
+            ArrayList<Long> li = new ArrayList<>();
             for(int j=0; j<=i; j++){
-                if(j==i || j==0){
-                    l1.add((long)1);
+                if(j==0 || j==i){
+                    li.add((long)1);
                 }else{
-                    l1.add((list.get(j-1)+list.get(j))%1000000007);
+                    li.add((list.get(j-1)+list.get(j))%1000000007);
                 }
             }
-            list = l1;
+            list = li;
         }
         return list;
     }
 }
-
