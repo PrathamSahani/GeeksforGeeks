@@ -117,24 +117,22 @@ class Node
 class Solution
 {
     // return the Kth largest element in the given BST rooted at 'root'
+    int res =0;
     int count =0;
-    int result =0;
-    public void inorder(Node root, int k){
-        if(root==null)return ;
-        inorder(root.right, k);
+    public int inOrder(Node root, int k){
+        if(root==null)return res;
+        inOrder(root.right, k);
         count++;
         if(count==k){
-            result = root.data;
-            return ;
+            res = root.data;
         }
-        inorder(root.left, k);
+        inOrder(root.left, k);
+        return res;
     }
     public int kthLargest(Node root,int K)
     {
         //Your code here
-      
-        inorder(root, K);
-        return result;
+        return inOrder(root, K);
     }
 }
 
