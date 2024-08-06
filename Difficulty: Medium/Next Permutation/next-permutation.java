@@ -34,15 +34,19 @@ class GFG{
 class Solution{
     static List<Integer> nextPermutation(int N, int nums[]){
         // code here
-        int ind1=-1, ind2=-1;
+        int ind1 =-1, ind2 =-1;
         for(int i=nums.length-2; i>=0; i--){
             if(nums[i]<nums[i+1]){
                 ind1 =i;
                 break;
             }
-        }if(ind1==-1){
-            reverse(nums, 0);
-        }else{
+            
+        }
+        if(ind1==-1){
+            reverse(nums, 0, nums.length-1);
+
+        }else
+        {
             for(int i=nums.length-1; i>=0; i--){
                 if(nums[i]>nums[ind1]){
                     ind2 =i;
@@ -50,25 +54,27 @@ class Solution{
                 }
             }
             swap(nums, ind1, ind2);
-            reverse(nums, ind1+1);
+            reverse(nums, ind1+1, nums.length-1);
         }
-        List<Integer> list = new ArrayList<>();
+        
+        List<Integer> li = new ArrayList<>();
         for(int i=0; i<N; i++){
-            list.add(nums[i]);
+            li.add(nums[i])
+
+;
         }
-        return list;
+        return li;
     }
-    static void swap(int nums[], int start, int end){
-        int temp= nums[start];
-        nums[start] = nums[end];
-        nums[end]= temp;
-    }
-    static void reverse(int nums[], int start){
-        int i= start , j=nums.length-1;
-        while(i<=j){
-            swap(nums, i, j);
-            i++;
-            j--;
+    static void reverse(int nums[], int start, int end){
+        while(start<end){
+            swap(nums, start, end);
+            start++;
+            end--;
         }
+    }
+    static void swap(int [] nums, int i, int j){
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 }
