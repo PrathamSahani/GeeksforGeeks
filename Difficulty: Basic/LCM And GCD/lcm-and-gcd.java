@@ -24,12 +24,15 @@ class GFG {
 // } Driver Code Ends
 
 
+
+
 class Solution {
     static Long[] lcmAndGcd(Long A , Long B) {
         // code here
         Long[] ab = new Long[2];
+        
         Long a1 = A;
-        Long b1 = B;
+        Long b1= B;
         while(A>0 && B>0){
             if(A>B){
                 A = A%B;
@@ -37,12 +40,14 @@ class Solution {
                 B = B%A;
             }
         }
-        if(A==0)ab[1]  =B;
+        if(A==0)
+        ab[1] = B;
         else
-        ab[1] = A;
+        ab[1]= A;
         
-        ab[0] = (a1*b1)/ab[1];
+        ab[0] = ( a1*b1)/ab[1];
         return ab;
+ 
 
 
  
