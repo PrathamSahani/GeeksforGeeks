@@ -20,14 +20,18 @@ class Main {
 
 
 class Solution {
-    void print(int N){
-        for(int i=0; i<N; i++){
-            System.out.print("GFG"+" ");
-        }
+    
+    void prind(int n){
+         
+         if(n>0){
+        prind(n-1);
+        System.out.print("GFG"+" ");
+         }
     }
 
     void printGfg(int N) {
         // code here
-        print(N);
+        prind(N);
+        
     }
 }
